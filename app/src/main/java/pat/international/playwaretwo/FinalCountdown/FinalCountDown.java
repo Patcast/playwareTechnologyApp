@@ -1,5 +1,6 @@
 package pat.international.playwaretwo.FinalCountdown;
 
+import static com.livelife.motolibrary.AntData.LED_COLOR_BLUE;
 import static com.livelife.motolibrary.AntData.LED_COLOR_OFF;
 import static com.livelife.motolibrary.AntData.LED_COLOR_RED;
 
@@ -35,14 +36,19 @@ public class FinalCountDown extends Game {
         GameType gt = new GameType(1, GameType.GAME_TYPE_TIME, 10, "1 player 30 sec",1);
         addGameType(gt);
     }
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onGameStart()
     {
         super.onGameStart();
-        int numberOfTiles = connection.connectedTiles.size();
-        Toast.makeText(context, "Starting Game with " + numberOfTiles+ " tiles.", Toast.LENGTH_LONG).show();
         connection.setAllTilesIdle(LED_COLOR_OFF);
+        connection.setAllTilesColor(LED_COLOR_BLUE);
 
+        connection.connectedTiles.forEach(this::startClock);
+    }
+
+    private void startClock(int idOfTile){
+        connection.setTileColorCountdown(LED_COLOR_BLUE,idOfTile,20);
     }
 
     @Override
@@ -55,6 +61,12 @@ public class FinalCountDown extends Game {
             gameCount++;
             countObserver.notifyCount(gameCount);
             incrementPlayerScore(1,0);
+
+        }
+        if (event == AntData.CMD_COUNTDOWN_TIMEUP)
+        {
+            Toast.makeText(context, "Click", Toast.LENGTH_LONG).show();
+
         }
     }
 
