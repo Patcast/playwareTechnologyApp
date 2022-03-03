@@ -18,8 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         ActionBar actionBar;
         actionBar = getSupportActionBar();
         ColorDrawable colorDrawable = new ColorDrawable(ContextCompat.getColor(this, R.color.toolBar));
-
-        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setBackgroundDrawable(colorDrawable);// don't worry about this
 
     }
 }
