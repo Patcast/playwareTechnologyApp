@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_startChase"
             app:destination="@id/startChase" />
+        <action
+            android:id="@+id/action_mainFragment_to_startGame4"
+            app:destination="@id/startGame4" />
     </fragment>
     <fragment
         android:id="@+id/startChase"
@@ -34,4 +37,9 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/startGame4"
+        android:name="pat.international.playwaretwo.Ass4.startGame4"
+        android:label="fragment_start_game_four"
+        tools:layout="@layout/fragment_start_game_four" />
 </navigation>
