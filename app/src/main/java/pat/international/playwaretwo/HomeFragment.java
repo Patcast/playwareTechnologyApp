@@ -57,12 +57,13 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
     }
 
     private void startGameFour() {
-        if(numOfTiles>0){
+        nav.navigate(R.id.action_mainFragment_to_startGame4);
+       /* if(numOfTiles>0){
             nav.navigate(R.id.action_mainFragment_to_startGame4);
         }
         else{
             Toast.makeText(getContext(), "Please, check if the tiles are connected.", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     // I have problems reestablishing the connection, how often do I need to pair.

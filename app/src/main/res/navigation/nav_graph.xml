@@ -39,7 +39,12 @@
     </fragment>
     <fragment
         android:id="@+id/startGame4"
-        android:name="pat.international.playwaretwo.Ass4.startGame4"
+        android:name="pat.international.playwaretwo.FinalCountdown.FragmentFinalCountdownStart"
         android:label="fragment_start_game_four"
-        tools:layout="@layout/fragment_start_game_four" />
+        tools:layout="@layout/fragment_start_game_four" >
+        <action
+            android:id="@+id/action_startGame4_to_endChase"
+            app:destination="@id/endChase"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
 </navigation>
