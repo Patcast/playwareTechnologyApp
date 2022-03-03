@@ -61,11 +61,12 @@ public class FinalCountDown extends Game {
             gameCount++;
             countObserver.notifyCount(gameCount);
             incrementPlayerScore(1,0);
+            startClock(AntData.getId(message));
 
         }
         if (event == AntData.CMD_COUNTDOWN_TIMEUP)
         {
-            Toast.makeText(context, "Click", Toast.LENGTH_LONG).show();
+            this.stopGame();
 
         }
     }

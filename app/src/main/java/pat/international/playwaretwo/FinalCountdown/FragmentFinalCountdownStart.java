@@ -108,7 +108,9 @@ public class FragmentFinalCountdownStart extends Fragment implements OnAntEventL
                 // Set nav to transfer score
                 FragmentFinalCountdownStartDirections.ActionStartGame4ToEndChase action = FragmentFinalCountdownStartDirections.actionStartGame4ToEndChase();
                 action.setGameCount(score);
-                Navigation.findNavController(v).navigate(action);
+
+                getActivity().runOnUiThread(() -> { Navigation.findNavController(v).navigate(action); });
+
 
             }
 
