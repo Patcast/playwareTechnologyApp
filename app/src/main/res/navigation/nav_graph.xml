@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="pat.international.playwaretwo.HomeFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_startChase"
+            app:destination="@id/startChase" />
+    </fragment>
+    <fragment
+        android:id="@+id/startChase"
+        android:name="pat.international.playwaretwo.ChaseTheLight.StartChase"
+        android:label="fragment_start_chase"
+        tools:layout="@layout/fragment_start_chase" >
+        <action
+            android:id="@+id/action_startChase_to_endChase"
+            app:destination="@id/endChase"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/endChase"
+        android:name="pat.international.playwaretwo.ChaseTheLight.EndChase"
+        android:label="fragment_end_chase"
+        tools:layout="@layout/fragment_end_chase" >
+        <argument
+            android:name="gameCount"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
