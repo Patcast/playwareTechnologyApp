@@ -46,12 +46,23 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         connection.saveRfFrequency(68); // See the back of your tile for your group’s RF
         connection.setDeviceId(7); //Your group number
         //connection.registerListener(this);
-        Button startGame = view.findViewById(R.id.button_game);
+        Button startGame3 = view.findViewById(R.id.button_game3);
+        Button startGame4 = view.findViewById(R.id.button_game4);
         tilesNumText = view.findViewById(R.id.textNumTilesStart);
         Button pairingButton = view.findViewById(R.id.button_start);
         pairingButton.setOnClickListener(p->paring(pairingButton));
         nav = Navigation.findNavController(view);
-        startGame.setOnClickListener(v-> startGameChase());
+        startGame3.setOnClickListener(v-> startGameChase());
+        startGame4.setOnClickListener(v-> startGameFour());
+    }
+
+    private void startGameFour() {
+        if(numOfTiles>0){
+            nav.navigate(R.id.action_mainFragment_to_startGame4);
+        }
+        else{
+            Toast.makeText(getContext(), "Please, check if the tiles are connected.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // I have problems reestablishing the connection, how often do I need to pair.
