@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class FragmentFinalCountdownStart extends Fragment implements OnAntEventL
 
     TextView scoreText;
     Button endGameBtn;
+    Chronometer simpleChronometer;
     int score = 0;
     NavController nav;
     boolean register = false;
@@ -38,6 +40,7 @@ public class FragmentFinalCountdownStart extends Fragment implements OnAntEventL
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_start_game_four, container, false);
+        simpleChronometer = (Chronometer) v.findViewById(R.id.simpleChronometer); // initiate a chronometer
         endGameBtn = v.findViewById(R.id.button_end);
         scoreText = v.findViewById(R.id.textScore);
         return v;
@@ -57,6 +60,7 @@ public class FragmentFinalCountdownStart extends Fragment implements OnAntEventL
         tilesExecution();
         finalCountDown.selectedGameType = finalCountDown.getGameTypes().get(0);
         finalCountDown.startGame();
+        simpleChronometer.start(); // start a chronometer
         register = true;
     }
 
@@ -152,5 +156,12 @@ public class FragmentFinalCountdownStart extends Fragment implements OnAntEventL
             score= count;
             scoreText.setText(String.valueOf(score));
         });
+    }
+
+    public void StopTime() {
+        FinalTime();
+    }
+    private void FinalTime(){
+        simpleChronometer.stop(); // stop a chronometer
     }
 }

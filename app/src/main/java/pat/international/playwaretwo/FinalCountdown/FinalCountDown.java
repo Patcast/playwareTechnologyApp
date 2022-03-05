@@ -7,6 +7,8 @@ import static com.livelife.motolibrary.AntData.LED_COLOR_RED;
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
+import android.view.View;
+import android.widget.Chronometer;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -15,27 +17,29 @@ import com.livelife.motolibrary.Game;
 import com.livelife.motolibrary.GameType;
 import com.livelife.motolibrary.MotoConnection;
 import pat.international.playwaretwo.GameCountObserver;
+import pat.international.playwaretwo.GameCountTimeObserver;
 
 public class FinalCountDown extends Game {
     MotoConnection connection = MotoConnection.getInstance();
     Context context;
     int gameCount;
-    GameCountObserver countObserver;
+    GameCountTimeObserver countObserver;
     int speedOfTile = 20;
     double counter = 2;
     int slowestSpeed = 29;
     boolean playing = false;
 
 
-    private void subscribeObserver(GameCountObserver obsv){
-        countObserver = obsv;
+
+    private void subscribeObserver(GameCountTimeObserver obsv){
+        countObserver = (GameCountTimeObserver) obsv;
     }
     private void unSubscribeObserver(){
         countObserver = null;
     }
     public FinalCountDown(Context context, GameCountObserver obsv ) {
         this.context = context;
-        subscribeObserver(obsv);
+        subscribeObserver((GameCountTimeObserver) obsv);
         setName("Final Count Down");
         GameType gt = new GameType(1, GameType.GAME_TYPE_TIME, 6000, "1 player 30 sec",1);
         addGameType(gt);
@@ -74,6 +78,7 @@ public class FinalCountDown extends Game {
         }
         if (event == AntData.CMD_COUNTDOWN_TIMEUP)
         {
+            countObserver.StopTime();
             this.stopGame();
         }
     }
