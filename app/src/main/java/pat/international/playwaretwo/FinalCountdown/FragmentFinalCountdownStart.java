@@ -104,8 +104,6 @@ public class FragmentFinalCountdownStart extends Fragment implements OnAntEventL
             public void onGameStopEvent()
             {
                 finalCountDown.stopGame();
-                Toast.makeText(getContext(), "END", Toast.LENGTH_SHORT).show();
-                // Set nav to transfer score
                 FragmentFinalCountdownStartDirections.ActionStartGame4ToEndChase action = FragmentFinalCountdownStartDirections.actionStartGame4ToEndChase();
                 action.setGameCount(score);
 
