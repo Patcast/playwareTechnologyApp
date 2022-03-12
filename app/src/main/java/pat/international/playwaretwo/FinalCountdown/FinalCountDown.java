@@ -23,7 +23,7 @@ public class FinalCountDown extends Game {
     MotoConnection connection = MotoConnection.getInstance();
     Context context;
     int gameCount;
-    GameCountTimeObserver countObserver;
+    GameCountObserver countObserver;
     int speedOfTile = 20;
     double counter = 2;
     int slowestSpeed = 29;
@@ -31,15 +31,15 @@ public class FinalCountDown extends Game {
 
 
 
-    private void subscribeObserver(GameCountTimeObserver obsv){
-        countObserver = (GameCountTimeObserver) obsv;
+    private void subscribeObserver(GameCountObserver obsv){
+        countObserver = obsv;
     }
     private void unSubscribeObserver(){
         countObserver = null;
     }
     public FinalCountDown(Context context, GameCountObserver obsv ) {
         this.context = context;
-        subscribeObserver((GameCountTimeObserver) obsv);
+        subscribeObserver(obsv);
         setName("Final Count Down");
         GameType gt = new GameType(1, GameType.GAME_TYPE_TIME, 6000, "1 player 30 sec",1);
         addGameType(gt);
@@ -78,7 +78,6 @@ public class FinalCountDown extends Game {
         }
         if (event == AntData.CMD_COUNTDOWN_TIMEUP)
         {
-            countObserver.StopTime();
             this.stopGame();
         }
     }

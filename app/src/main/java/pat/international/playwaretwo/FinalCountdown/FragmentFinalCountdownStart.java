@@ -108,8 +108,11 @@ public class FragmentFinalCountdownStart extends Fragment implements OnAntEventL
             public void onGameStopEvent()
             {
                 finalCountDown.stopGame();
+                CharSequence time = simpleChronometer.getText();
+                simpleChronometer.stop();
                 FragmentFinalCountdownStartDirections.ActionStartGame4ToEndChase action = FragmentFinalCountdownStartDirections.actionStartGame4ToEndChase();
                 action.setGameCount(score);
+                action.setTimeResult((String) time);
 
                 getActivity().runOnUiThread(() -> { Navigation.findNavController(v).navigate(action); });
 
@@ -156,12 +159,5 @@ public class FragmentFinalCountdownStart extends Fragment implements OnAntEventL
             score= count;
             scoreText.setText(String.valueOf(score));
         });
-    }
-
-    public void StopTime() {
-        FinalTime();
-    }
-    private void FinalTime(){
-        simpleChronometer.stop(); // stop a chronometer
     }
 }
