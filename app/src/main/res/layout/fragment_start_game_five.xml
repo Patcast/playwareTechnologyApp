@@ -59,6 +59,35 @@
         app:layout_constraintTop_toBottomOf="@+id/textGame" />
 
     <TextView
+        android:id="@+id/textViewColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Color: "
+        android:textSize="30sp"
+
+
+        app:layout_constraintEnd_toStartOf="@+id/textScore"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNumTiles" />
+
+    <TextView
+        android:id="@+id/textColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Red"
+        android:textSize="30sp"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textNumTiles" />
+
+
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,20 +99,20 @@
         app:layout_constraintEnd_toStartOf="@+id/textScore"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNumTiles" />
+        app:layout_constraintTop_toBottomOf="@+id/textColor" />
 
     <TextView
         android:id="@+id/textScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="40"
+        android:text="0"
         android:textSize="30sp"
 
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textNumTiles" />
+        app:layout_constraintTop_toBottomOf="@+id/textColor" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

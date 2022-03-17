@@ -1,4 +1,4 @@
-package pat.international.playwaretwo.ChaseTheLight;
+package pat.international.playwaretwo.GameHitTheTarget;
 
 import android.os.Bundle;
 
@@ -19,17 +19,16 @@ import com.livelife.motolibrary.GameType;
 import com.livelife.motolibrary.MotoConnection;
 import com.livelife.motolibrary.OnAntEventListener;
 
+import pat.international.playwaretwo.ChaseTheLight.ChaseTheLightClass;
 import pat.international.playwaretwo.GameCountObserver;
-import pat.international.playwaretwo.HomeActivity;
 import pat.international.playwaretwo.R;
 
-
-public class StartChase extends Fragment implements OnAntEventListener, GameCountObserver {
-
+public class GameHitTheTargetStart extends Fragment implements OnAntEventListener, GameCountObserver {
 
     MotoConnection connection = MotoConnection.getInstance();
     LinearLayout gt_container;
-    ChaseTheLightClass chaseTheLightClass; // ChaseTheLightClass object
+
+    GameHitTheTarget gameHitTheTarget; // ChaseTheLightClass object
     TextView gameText,tilesNumText,scoreText;
     Button endGameBtn;
     int score = 0;
@@ -38,12 +37,10 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
     boolean register = false;
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_start_chase, container, false);
+        v = inflater.inflate(R.layout.fragment_start_game_six, container, false);
 
         endGameBtn = v.findViewById(R.id.button_end);
         gameText = v.findViewById(R.id.textGame);
@@ -66,11 +63,11 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
             nav.popBackStack();
         });
         scoreText.setText(String.valueOf(score));
-        chaseTheLightClass = new ChaseTheLightClass(getContext(),this);
+        gameHitTheTarget = new GameHitTheTarget(getContext(),this);
         tilesExecution();
     }
 
-   @Override
+    @Override
     public void onStart() {
         super.onStart();
         if(!register){
@@ -94,29 +91,26 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
         super.onDestroy();
         endGame();
     }
-
     private void endGame(){
         //connection.stopMotoConnection();
         connection.unregisterListener(this);
-        chaseTheLightClass.stopGame();
+        gameHitTheTarget.stopGame();
     }
-
-
     private void tilesExecution(){
-        for (final GameType gt : chaseTheLightClass.getGameTypes())
+        for (final GameType gt : gameHitTheTarget.getGameTypes())
         {
             Button b = new Button(getContext());
             b.setText(gt.getName());
             b.setOnClickListener(v -> {
-                    chaseTheLightClass.selectedGameType = gt;
-                    gameText.setText("Game is running");
-                    gt_container.setVisibility(View.GONE);
-                    chaseTheLightClass.startGame();
-                    register = true;
+                gameHitTheTarget.selectedGameType = gt;
+                gameText.setText("Game is running");
+                gt_container.setVisibility(View.GONE);
+                gameHitTheTarget.startGame();
+                register = true;
             });
             gt_container.addView(b);
         }
-        chaseTheLightClass.setOnGameEventListener(new ChaseTheLightClass.OnGameEventListener()
+        gameHitTheTarget.setOnGameEventListener(new ChaseTheLightClass.OnGameEventListener()
         {
             @Override
             public void onGameTimerEvent(int i)
@@ -129,8 +123,8 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
             @Override
             public void onGameStopEvent()
             {
-                chaseTheLightClass.stopGame();
-                StartChaseDirections.ActionStartChaseToEndChase action = StartChaseDirections.actionStartChaseToEndChase();
+                gameHitTheTarget.stopGame();
+                GameHitTheTargetStartDirections.ActionStartGame6ToEndChase action = GameHitTheTargetStartDirections.actionStartGame6ToEndChase();
                 action.setGameCount(score);
                 Navigation.findNavController(v).navigate(action);
             }
@@ -153,7 +147,7 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
 
     @Override
     public void onMessageReceived(byte[] bytes, long l) {
-        chaseTheLightClass.addEvent(bytes);
+        gameHitTheTarget.addEvent(bytes);
     }
 
     @Override
@@ -176,4 +170,5 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
             scoreText.setText(String.valueOf(score));
         });
     }
+
 }

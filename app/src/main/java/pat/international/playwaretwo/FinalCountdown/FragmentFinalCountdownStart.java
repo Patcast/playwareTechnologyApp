@@ -1,4 +1,4 @@
-package pat.international.playwaretwo.ChaseTheLight;
+package pat.international.playwaretwo.FinalCountdown;
 
 import android.os.Bundle;
 
@@ -12,43 +12,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.Chronometer;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.livelife.motolibrary.GameType;
 import com.livelife.motolibrary.MotoConnection;
 import com.livelife.motolibrary.OnAntEventListener;
 
+import pat.international.playwaretwo.ChaseTheLight.ChaseTheLightClass;
 import pat.international.playwaretwo.GameCountObserver;
-import pat.international.playwaretwo.HomeActivity;
 import pat.international.playwaretwo.R;
 
 
-public class StartChase extends Fragment implements OnAntEventListener, GameCountObserver {
+public class FragmentFinalCountdownStart extends Fragment implements OnAntEventListener, GameCountObserver {
 
-
-    MotoConnection connection = MotoConnection.getInstance();
-    LinearLayout gt_container;
-    ChaseTheLightClass chaseTheLightClass; // ChaseTheLightClass object
-    TextView gameText,tilesNumText,scoreText;
+    TextView scoreText;
     Button endGameBtn;
+    Chronometer simpleChronometer;
     int score = 0;
     NavController nav;
-    View v;
     boolean register = false;
-
-
-
+    View v;
+    MotoConnection connection = MotoConnection.getInstance();
+    FinalCountDown finalCountDown;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_start_chase, container, false);
-
+        v = inflater.inflate(R.layout.fragment_start_game_four, container, false);
+        simpleChronometer = (Chronometer) v.findViewById(R.id.simpleChronometer); // initiate a chronometer
         endGameBtn = v.findViewById(R.id.button_end);
-        gameText = v.findViewById(R.id.textGame);
-        tilesNumText = v.findViewById(R.id.textNumTiles);
-        gt_container = v.findViewById(R.id.game_type_container);
         scoreText = v.findViewById(R.id.textScore);
         return v;
     }
@@ -59,18 +52,19 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
         connection.startMotoConnection(getContext());
         connection.registerListener(this);
         nav = Navigation.findNavController(view);
-        gt_container.setVisibility(View.VISIBLE);
-        gameText.setText("Select a mode!");
         endGameBtn.setOnClickListener(v->{
             endGame();
             nav.popBackStack();
         });
-        scoreText.setText(String.valueOf(score));
-        chaseTheLightClass = new ChaseTheLightClass(getContext(),this);
+        finalCountDown = new FinalCountDown(getContext(),this);
         tilesExecution();
+        finalCountDown.selectedGameType = finalCountDown.getGameTypes().get(0);
+        finalCountDown.startGame();
+        simpleChronometer.start(); // start a chronometer
+        register = true;
     }
 
-   @Override
+    @Override
     public void onStart() {
         super.onStart();
         if(!register){
@@ -88,35 +82,19 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
         //connection.stopMotoConnection();
         connection.unregisterListener(this);
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
         endGame();
     }
-
     private void endGame(){
         //connection.stopMotoConnection();
         connection.unregisterListener(this);
-        chaseTheLightClass.stopGame();
+        finalCountDown.stopGame();
     }
 
-
     private void tilesExecution(){
-        for (final GameType gt : chaseTheLightClass.getGameTypes())
-        {
-            Button b = new Button(getContext());
-            b.setText(gt.getName());
-            b.setOnClickListener(v -> {
-                    chaseTheLightClass.selectedGameType = gt;
-                    gameText.setText("Game is running");
-                    gt_container.setVisibility(View.GONE);
-                    chaseTheLightClass.startGame();
-                    register = true;
-            });
-            gt_container.addView(b);
-        }
-        chaseTheLightClass.setOnGameEventListener(new ChaseTheLightClass.OnGameEventListener()
+        finalCountDown.setOnGameEventListener(new ChaseTheLightClass.OnGameEventListener()
         {
             @Override
             public void onGameTimerEvent(int i)
@@ -129,10 +107,16 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
             @Override
             public void onGameStopEvent()
             {
-                chaseTheLightClass.stopGame();
-                StartChaseDirections.ActionStartChaseToEndChase action = StartChaseDirections.actionStartChaseToEndChase();
+                finalCountDown.stopGame();
+                CharSequence time = simpleChronometer.getText();
+                simpleChronometer.stop();
+                FragmentFinalCountdownStartDirections.ActionStartGame4ToEndChase action = FragmentFinalCountdownStartDirections.actionStartGame4ToEndChase();
                 action.setGameCount(score);
-                Navigation.findNavController(v).navigate(action);
+                action.setTimeResult((String) time);
+
+                getActivity().runOnUiThread(() -> { Navigation.findNavController(v).navigate(action); });
+
+
             }
 
             @Override
@@ -151,9 +135,10 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
             } });
     }
 
+
     @Override
     public void onMessageReceived(byte[] bytes, long l) {
-        chaseTheLightClass.addEvent(bytes);
+        finalCountDown.addEvent(bytes);
     }
 
     @Override
@@ -165,7 +150,6 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
     public void onNumbersOfTilesConnected(int i) {
 
     }
-
     @Override
     public void notifyCount(int count) {
         updateCount(count);

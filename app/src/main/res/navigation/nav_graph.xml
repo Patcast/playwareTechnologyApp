@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_mainFragment_to_startGame4"
             app:destination="@id/startGame4" />
+        <action
+            android:id="@+id/action_mainFragment_to_startGame5"
+            app:destination="@id/startGame5" />
+        <action
+            android:id="@+id/action_mainFragment_to_startGame6"
+            app:destination="@id/startGame6" />
     </fragment>
     <fragment
         android:id="@+id/startChase"
@@ -38,8 +44,46 @@
             android:defaultValue="0" />
     </fragment>
     <fragment
+        android:id="@+id/endFinalCountdown"
+        android:name="pat.international.playwaretwo.FinalCountdown.EndFinalCountDown"
+        android:label="fragment_end_final_countdown"
+        tools:layout="@layout/fragment_end_chase" >
+        <argument
+            android:name="gameCount"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="timeResult"
+            app:argType="string"
+            android:defaultValue='"error"' />
+    </fragment>
+    <fragment
         android:id="@+id/startGame4"
-        android:name="pat.international.playwaretwo.Ass4.startGame4"
+        android:name="pat.international.playwaretwo.FinalCountdown.FragmentFinalCountdownStart"
         android:label="fragment_start_game_four"
-        tools:layout="@layout/fragment_start_game_four" />
+        tools:layout="@layout/fragment_start_game_four">
+        <action
+            android:id="@+id/action_startGame4_to_end_chase"
+            app:destination="@id/endFinalCountdown"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startGame5"
+        android:name="pat.international.playwaretwo.ColorCall.ColorCallStart"
+        android:label="fragment_start_game_five"
+        tools:layout="@layout/fragment_start_game_five">
+        <action
+            android:id="@+id/action_startGame5_to_endChase"
+            app:destination="@id/endChase" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/startGame6"
+        android:name="pat.international.playwaretwo.GameHitTheTarget.GameHitTheTargetStart"
+        android:label="fragment_start_game_six"
+        tools:layout="@layout/fragment_start_game_six">
+        <action
+            android:id="@+id/action_startGame6_to_endChase"
+            app:destination="@id/endChase" />
+    </fragment>
 </navigation>

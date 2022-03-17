@@ -14,18 +14,58 @@
         android:text="Start Pairing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
 
     <Button
-        android:id="@+id/button_game"
+        android:id="@+id/button_game3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Game"
+        android:text="Start Game 3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_start" />
+        app:layout_constraintTop_toBottomOf="@+id/button_start"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <Button
+        android:id="@+id/button_game4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game 4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_game3"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <Button
+        android:id="@+id/button_game5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game 5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_game4"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <Button
+        android:id="@+id/button_game6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game 6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_game4"
+        app:layout_constraintVertical_bias="0.313" />
 
     <TextView
         android:id="@+id/textNumTilesStart"
