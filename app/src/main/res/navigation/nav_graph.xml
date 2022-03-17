@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_mainFragment_to_startGame5"
             app:destination="@id/startGame5" />
+        <action
+            android:id="@+id/action_mainFragment_to_startGame6"
+            app:destination="@id/startGame6" />
     </fragment>
     <fragment
         android:id="@+id/startChase"
@@ -71,6 +74,16 @@
         tools:layout="@layout/fragment_start_game_five">
         <action
             android:id="@+id/action_startGame5_to_endChase"
+            app:destination="@id/endChase" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/startGame6"
+        android:name="pat.international.playwaretwo.GameHitTheTarget.GameHitTheTargetStart"
+        android:label="fragment_start_game_six"
+        tools:layout="@layout/fragment_start_game_six">
+        <action
+            android:id="@+id/action_startGame6_to_endChase"
             app:destination="@id/endChase" />
     </fragment>
 </navigation>
