@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_mainFragment_to_startGame6"
             app:destination="@id/startGame6" />
+        <action
+            android:id="@+id/action_mainFragment_to_listMain"
+            app:destination="@id/listMain" />
     </fragment>
     <fragment
         android:id="@+id/startChase"
@@ -86,4 +89,9 @@
             android:id="@+id/action_startGame6_to_endChase"
             app:destination="@id/endChase" />
     </fragment>
+    <fragment
+        android:id="@+id/listMain"
+        android:name="pat.international.playwaretwo.ass8.ListMain"
+        android:label="fragment_list_main"
+        tools:layout="@layout/fragment_list_main" />
 </navigation>
