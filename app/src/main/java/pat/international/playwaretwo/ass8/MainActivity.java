@@ -9,6 +9,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+/*
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<com.example.list.Games> games = new ArrayList<com.example.list.Games>();
 
-        games.add(new com.example.list.Games("Normal mode"));
+        games.add(new Games("Normal mode"));
         games.add(new com.example.list.Games("Hard mode"));
         games.add(new com.example.list.Games("Normal time mode practice"));
         games.add(new com.example.list.Games("Hard time mode practice"));
@@ -49,4 +50,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-}
+}*/

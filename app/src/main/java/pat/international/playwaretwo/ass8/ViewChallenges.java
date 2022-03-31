@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+/*
 public class ViewChallenges extends AppCompatActivity implements OnAntEventListener {
 
     MotoConnection connection;
@@ -157,3 +158,4 @@ public class ViewChallenges extends AppCompatActivity implements OnAntEventListe
 
     }
 }
+*/
