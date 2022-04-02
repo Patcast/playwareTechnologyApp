@@ -3,10 +3,12 @@ package pat.international.playwaretwo.ass8;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -16,7 +18,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -97,6 +101,7 @@ public class ListMain extends Fragment {
 
         //The String that is returned in the doInBackground() method is sent to the
         // onPostExecute() method below. The String should contain JSON data.
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         protected void onPostExecute(String result) {
             try {
@@ -117,6 +122,7 @@ public class ListMain extends Fragment {
                 if(jsonObject.getString("method").equals("getGameChallenge")) {
                     JSONArray challenges = jsonObject.getJSONArray("results");
                     challengesList.clear();
+                    ArrayList<Challenge> nonFilteredChallenges= new ArrayList<>();
                     for(int i = 0; i < challenges.length();i++) {
                         JSONObject challenge = challenges.getJSONObject(i);
                         Log.i("challenge",challenge.toString());
@@ -124,10 +130,14 @@ public class ListMain extends Fragment {
                                                 challenge.getString("challenger_name"),
                                                 challenge.getString("challenged_name"),
                                                 challenge.getInt("game_id"),
-                                                challenge.getInt("c_status"));
-                        challengesList.add(ch);
+                                                challenge.getInt("c_status"),challenge.getInt("group_id"));
+                        nonFilteredChallenges.add(ch);
                     }
                     // Update UI
+                    List<Challenge> filteredChallenges= nonFilteredChallenges.stream()
+                                            .filter(i-> i.getGroupId()==69)
+                                            .collect(Collectors.toList());
+                    challengesList.addAll(filteredChallenges);
                     adapter.setSuperGameAdapter(challengesList);
                 }
 

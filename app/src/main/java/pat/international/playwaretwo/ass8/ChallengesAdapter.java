@@ -25,10 +25,9 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ChallengesAdapter.ViewHolder holder, int position) {
         holder.challengedName.setText(gamesList.get(position).getChallengedName());
-        holder.challengerName.setText(gamesList.get(position).getChallengedName());
-        holder.gameId.setText(gamesList.get(position).getChallengedName());
-        holder.status.setText(gamesList.get(position).getChallengedName());
-
+        holder.challengerName.setText(gamesList.get(position).getChallengerName());
+        holder.gameId.setText(String.valueOf(gamesList.get(position).getGameId()));
+        holder.status.setText(String.valueOf(gamesList.get(position).getStatus()));
     }
 
     @Override
