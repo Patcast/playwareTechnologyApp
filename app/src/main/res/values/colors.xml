@@ -10,5 +10,6 @@
     <color name="background">#CAFFD3</color>
     <color name="buttons">#009688</color>
     <color name="TextColor1">#013C3C</color>
+    <color name="recView">#00963d</color>
 
 </resources>

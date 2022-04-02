@@ -71,7 +71,7 @@
         android:id="@+id/button_ass8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start 8"
+        android:text="View Challenges 8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

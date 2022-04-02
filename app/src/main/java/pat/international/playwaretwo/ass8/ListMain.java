@@ -1,32 +1,47 @@
 package pat.international.playwaretwo.ass8;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import pat.international.playwaretwo.R;
 
 
 public class ListMain extends Fragment {
 
+    private ChallengesAdapter adapter;
+    String endpoint = "https://centerforplayware.com/api/index.php";
+    Button simulateGetGameChallenge;
+    SharedPreferences sharedPref;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        sharedPref = getContext().getSharedPreferences("PLAYWARE_COURSE", Context.MODE_PRIVATE);
+
         return inflater.inflate(R.layout.fragment_list_main, container, false);
     }
 
@@ -34,6 +49,7 @@ public class ListMain extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        simulateGetGameChallenge = view.findViewById(R.id.get_challenge_btn);
         ArrayList<Games> games = new ArrayList<Games>();
 
         games.add(new Games("Normal mode"));
@@ -41,28 +57,90 @@ public class ListMain extends Fragment {
         games.add(new Games("Normal time mode practice"));
         games.add(new Games("Hard time mode practice"));
         games.add(new Games("View challenges"));
+        RecyclerView recyclerMicros = view.findViewById(R.id.recyclerView_games);
+        recyclerMicros.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        adapter = new ChallengesAdapter();
+        recyclerMicros.setAdapter(adapter);
+        adapter.seSuperGameAdapter(games);
 
+        simulateGetGameChallenge.setOnClickListener(v -> getGameChallenge());
 
-       /* GamesAdapter gamesAdapter = new GamesAdapter(this, games);
-
-        ListView listView = (ListView) findViewById(R.id.listview_games);
-        listView.setAdapter(gamesAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch(i){
-                    case 4:
-                        Intent viewchallenges = new Intent(MainActivity.this,ViewChallenges.class);
-                        startActivity(viewchallenges);
-                        break;
-                    case 0:
-                        Intent test = new Intent(MainActivity.this, com.example.list.Test.class);
-                        startActivity(test);
-                        break;
-                }
-            }
-        });*/
     }
+
+    private void getGameChallenge() {
+        RemoteHttpRequest requestPackage = new RemoteHttpRequest();
+        requestPackage.setMethod("GET");
+        requestPackage.setUrl(endpoint);
+        requestPackage.setParam("method","getGameChallenge"); // The method name
+        requestPackage.setParam("device_token",getDeviceToken()); // Your device token
+
+        Downloader downloader = new Downloader(); //Instantiation of the Async task
+        //that’s defined below
+        downloader.execute(requestPackage);
+    }
+
+    private String getDeviceToken() {
+        // Get unique device_token from shared preferences
+        // Remember that what is saved in sharedPref exists until you delete the app!
+        String device_token = sharedPref.getString("device_token",null);
+
+        if(device_token == null) { // If device_token was never saved and null create one
+            device_token =  UUID.randomUUID().toString(); // Get a new device_token
+            sharedPref.edit().putString("device_token",device_token).apply(); // save it to shared preferences so next time will be used
+        }
+
+        return device_token;
+    }
+
+    private class Downloader extends AsyncTask<RemoteHttpRequest, String, String> {
+        @Override
+        protected String doInBackground(RemoteHttpRequest... params) {
+            return HttpManager.getData(params[0]);
+        }
+
+        //The String that is returned in the doInBackground() method is sent to the
+        // onPostExecute() method below. The String should contain JSON data.
+        @Override
+        protected void onPostExecute(String result) {
+            try {
+                //We need to convert the string in result to a JSONObject
+                JSONObject jsonObject = new JSONObject(result);
+
+                String message = jsonObject.getString("message");
+                Log.i("sessions",message);
+
+                // Log the entire response if needed to check the data structure
+                Log.i("sessions",jsonObject.toString());
+
+                // Log response
+                Log.i("sessions","response: "+jsonObject.getBoolean("response"));
+                // Update UI
+
+
+                if(jsonObject.getString("method").equals("getGameChallenge")) {
+                    JSONArray challenges = jsonObject.getJSONArray("results");
+
+                    for(int i = 0; i < challenges.length();i++) {
+                        JSONObject challenge = challenges.getJSONObject(i);
+                        Log.i("challenge",challenge.toString());
+                        Challenge ch = new Challenge(
+                                                challenge.getString("challenger_name"),
+                                                challenge.getString("challenged_name"),
+                                                challenge.getInt("game_id"),
+                                                challenge.getInt("c_status"));
+                    }
+
+
+                    // Update UI
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }
 
