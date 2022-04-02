@@ -34,6 +34,7 @@ public class ListMain extends Fragment {
     String endpoint = "https://centerforplayware.com/api/index.php";
     Button simulateGetGameChallenge;
     SharedPreferences sharedPref;
+    private ArrayList<Challenge> challengesList = new ArrayList<>();
 
 
     @Override
@@ -50,18 +51,14 @@ public class ListMain extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         simulateGetGameChallenge = view.findViewById(R.id.get_challenge_btn);
-        ArrayList<Games> games = new ArrayList<Games>();
 
-        games.add(new Games("Normal mode"));
-        games.add(new Games("Hard mode"));
-        games.add(new Games("Normal time mode practice"));
-        games.add(new Games("Hard time mode practice"));
-        games.add(new Games("View challenges"));
+
+
         RecyclerView recyclerMicros = view.findViewById(R.id.recyclerView_games);
         recyclerMicros.setLayoutManager(new LinearLayoutManager(this.getContext()));
         adapter = new ChallengesAdapter();
         recyclerMicros.setAdapter(adapter);
-        adapter.seSuperGameAdapter(games);
+
 
         simulateGetGameChallenge.setOnClickListener(v -> getGameChallenge());
 
@@ -119,7 +116,7 @@ public class ListMain extends Fragment {
 
                 if(jsonObject.getString("method").equals("getGameChallenge")) {
                     JSONArray challenges = jsonObject.getJSONArray("results");
-
+                    challengesList.clear();
                     for(int i = 0; i < challenges.length();i++) {
                         JSONObject challenge = challenges.getJSONObject(i);
                         Log.i("challenge",challenge.toString());
@@ -128,10 +125,10 @@ public class ListMain extends Fragment {
                                                 challenge.getString("challenged_name"),
                                                 challenge.getInt("game_id"),
                                                 challenge.getInt("c_status"));
+                        challengesList.add(ch);
                     }
-
-
                     // Update UI
+                    adapter.setSuperGameAdapter(challengesList);
                 }
 
 
