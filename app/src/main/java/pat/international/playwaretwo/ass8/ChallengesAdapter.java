@@ -13,17 +13,17 @@ import java.util.List;
 
 import pat.international.playwaretwo.R;
 
-public class SuperGameAdapter extends RecyclerView.Adapter<SuperGameAdapter.ViewHolder>{
+public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.ViewHolder>{
     private final List<Games> gamesList = new ArrayList<>();
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View viewParent = LayoutInflater.from(parent.getContext()).inflate(R.layout.rec_view_ass8,parent,false);
-        return new SuperGameAdapter.ViewHolder(viewParent);
+        return new ChallengesAdapter.ViewHolder(viewParent);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SuperGameAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ChallengesAdapter.ViewHolder holder, int position) {
         holder.gameTitle.setText(gamesList.get(position).getGamesName());
     }
 
