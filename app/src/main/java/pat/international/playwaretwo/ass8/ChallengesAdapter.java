@@ -28,6 +28,7 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
         holder.challengerName.setText(gamesList.get(position).getChallengerName());
         holder.gameId.setText(String.valueOf(gamesList.get(position).getGameId()));
         holder.status.setText(String.valueOf(gamesList.get(position).getStatus()));
+        holder.dateCreated.setText(gamesList.get(position).getDateCreated());
     }
 
     @Override
@@ -36,11 +37,12 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView challengerName, challengedName,gameId,status;
+        TextView challengerName, challengedName,gameId,status,dateCreated;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             challengerName = itemView.findViewById(R.id.challenger_name_txt);
+            dateCreated = itemView.findViewById(R.id.date_txt);
             challengedName = itemView.findViewById(R.id.challenged_name_txt);
             gameId = itemView.findViewById(R.id.game_id_txt);
             status = itemView.findViewById(R.id.c_status_txt);
