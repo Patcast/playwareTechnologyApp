@@ -88,5 +88,24 @@
         app:layout_constraintBottom_toBottomOf="@+id/c_status_title"
         app:layout_constraintStart_toEndOf="@+id/c_status_title" />
 
+    <TextView
+        android:id="@+id/date_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Date"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/c_status_title" />
+
+    <TextView
+        android:id="@+id/date_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="date"
+        app:layout_constraintBottom_toBottomOf="@+id/date_title"
+        app:layout_constraintStart_toEndOf="@+id/date_title" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
