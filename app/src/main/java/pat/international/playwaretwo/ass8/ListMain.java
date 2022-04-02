@@ -74,9 +74,29 @@ public class ListMain extends Fragment {
         requestPackage.setUrl(endpoint);
         requestPackage.setParam("method","getGameChallenge"); // The method name
         requestPackage.setParam("device_token",getDeviceToken()); // Your device token
+        requestPackage.setParam("group_id","7"); // Your group ID
 
         Downloader downloader = new Downloader(); //Instantiation of the Async task
         //that’s defined below
+        downloader.execute(requestPackage);
+    }
+
+    private void postGameChallenge() {
+
+
+        RemoteHttpRequest requestPackage = new RemoteHttpRequest();
+        requestPackage.setMethod("POST");
+        requestPackage.setUrl(endpoint);
+        requestPackage.setParam("method","postGameChallenge"); // The method name
+        requestPackage.setParam("device_token",getDeviceToken()); // Your device token
+        requestPackage.setParam("game_id","1"); // The game ID (From the Game class > setGameId() function
+        requestPackage.setParam("game_type_id","1"); // The game type ID (From the GameType class creation > first parameter)
+        requestPackage.setParam("challenger_name","Floortje"); // The challenger name
+
+
+        Downloader downloader = new Downloader(); //Instantiation of the Async task
+        //that’s defined below
+
         downloader.execute(requestPackage);
     }
 
