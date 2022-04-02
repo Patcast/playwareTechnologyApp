@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class ListMain extends Fragment {
 
     private ChallengesAdapter adapter;
     String endpoint = "https://centerforplayware.com/api/index.php";
-    Button simulateGetGameChallenge;
+    Button simulateGetGameChallenge, postGameChallenge;
     SharedPreferences sharedPref;
     private ArrayList<Challenge> challengesList = new ArrayList<>();
 
@@ -55,7 +56,7 @@ public class ListMain extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         simulateGetGameChallenge = view.findViewById(R.id.get_challenge_btn);
-
+        postGameChallenge= view.findViewById(R.id.createChallenge_btn);
 
 
         RecyclerView recyclerMicros = view.findViewById(R.id.recyclerView_games);
@@ -65,6 +66,7 @@ public class ListMain extends Fragment {
 
 
         simulateGetGameChallenge.setOnClickListener(v -> getGameChallenge());
+        postGameChallenge.setOnClickListener(v -> postGameChallenge());
 
     }
 
@@ -74,7 +76,7 @@ public class ListMain extends Fragment {
         requestPackage.setUrl(endpoint);
         requestPackage.setParam("method","getGameChallenge"); // The method name
         requestPackage.setParam("device_token",getDeviceToken()); // Your device token
-        requestPackage.setParam("group_id","7"); // Your group ID
+        requestPackage.setParam("group_id","69"); // Your group ID
 
         Downloader downloader = new Downloader(); //Instantiation of the Async task
         //that’s defined below
@@ -92,7 +94,7 @@ public class ListMain extends Fragment {
         requestPackage.setParam("game_id","1"); // The game ID (From the Game class > setGameId() function
         requestPackage.setParam("game_type_id","1"); // The game type ID (From the GameType class creation > first parameter)
         requestPackage.setParam("challenger_name","Floortje"); // The challenger name
-
+        requestPackage.setParam("group_id","69");
 
         Downloader downloader = new Downloader(); //Instantiation of the Async task
         //that’s defined below
@@ -134,9 +136,7 @@ public class ListMain extends Fragment {
                 // Log the entire response if needed to check the data structure
                 Log.i("sessions",jsonObject.toString());
 
-                // Log response
-                Log.i("sessions","response: "+jsonObject.getBoolean("response"));
-                // Update UI
+
 
 
                 if(jsonObject.getString("method").equals("getGameChallenge")) {
@@ -145,12 +145,12 @@ public class ListMain extends Fragment {
                     ArrayList<Challenge> nonFilteredChallenges= new ArrayList<>();
                     for(int i = 0; i < challenges.length();i++) {
                         JSONObject challenge = challenges.getJSONObject(i);
-                        Log.i("challenge",challenge.toString());
                         Challenge ch = new Challenge(
                                                 challenge.getString("challenger_name"),
                                                 challenge.getString("challenged_name"),
                                                 challenge.getInt("game_id"),
-                                                challenge.getInt("c_status"),challenge.getInt("group_id"));
+                                                challenge.getInt("c_status"),
+                                                challenge.getInt("group_id"), challenge.getString("created"));
                         nonFilteredChallenges.add(ch);
                     }
                     // Update UI
@@ -160,8 +160,9 @@ public class ListMain extends Fragment {
                     challengesList.addAll(filteredChallenges);
                     adapter.setSuperGameAdapter(challengesList);
                 }
-
-
+                if(jsonObject.getString("method").equals("postGameChallenge")){
+                    Toast.makeText(getContext(), "A new challenge was created", Toast.LENGTH_SHORT).show();
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
