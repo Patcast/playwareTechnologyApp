@@ -14,7 +14,7 @@ import java.util.List;
 import pat.international.playwaretwo.R;
 
 public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.ViewHolder>{
-    private final List<Games> gamesList = new ArrayList<>();
+    private final List<Challenge> gamesList = new ArrayList<>();
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -24,7 +24,11 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ChallengesAdapter.ViewHolder holder, int position) {
-        holder.gameTitle.setText(gamesList.get(position).getGamesName());
+        holder.challengedName.setText(gamesList.get(position).getChallengedName());
+        holder.challengerName.setText(gamesList.get(position).getChallengedName());
+        holder.gameId.setText(gamesList.get(position).getChallengedName());
+        holder.status.setText(gamesList.get(position).getChallengedName());
+
     }
 
     @Override
@@ -33,15 +37,18 @@ public class ChallengesAdapter extends RecyclerView.Adapter<ChallengesAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView gameTitle;
+        TextView challengerName, challengedName,gameId,status;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            gameTitle = itemView.findViewById(R.id.game_title_txt);
+            challengerName = itemView.findViewById(R.id.challenger_name_txt);
+            challengedName = itemView.findViewById(R.id.challenged_name_txt);
+            gameId = itemView.findViewById(R.id.game_id_txt);
+            status = itemView.findViewById(R.id.c_status_txt);
         }
     }
 
-    public void seSuperGameAdapter(ArrayList <Games> gamesInput) {
+    public void setSuperGameAdapter(ArrayList <Challenge> gamesInput) {
         gamesList.clear();
         this.gamesList.addAll(gamesInput);
         notifyDataSetChanged();
