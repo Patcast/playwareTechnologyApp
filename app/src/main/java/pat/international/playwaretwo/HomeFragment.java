@@ -23,7 +23,6 @@ import com.livelife.motolibrary.OnAntEventListener;
 public class HomeFragment extends Fragment implements OnAntEventListener {
 
         private MotoConnection connection;
-
         private boolean isPairing = false;
         private TextView tilesNumText;
         private int numOfTiles;
@@ -47,6 +46,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         connection.setDeviceId(7); //Your group number
         //connection.registerListener(this);
         Button startGame3 = view.findViewById(R.id.button_game3);
+        Button startPianoDance = view.findViewById(R.id.button_piano);
         Button startGame4 = view.findViewById(R.id.button_game4);
         Button startGame5 = view.findViewById(R.id.button_game5);
         Button startGame6 = view.findViewById(R.id.button_game6);
@@ -60,6 +60,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         startGame5.setOnClickListener(v-> startGameFive());
         startGame6.setOnClickListener(v-> startGameSix());
         startAss8.setOnClickListener(v-> startAssEight());
+        startPianoDance.setOnClickListener(v-> nav.navigate(R.id.action_mainFragment_to_pianoTilesScreen));
     }
 
 
