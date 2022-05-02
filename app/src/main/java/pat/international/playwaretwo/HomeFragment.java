@@ -50,6 +50,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         Button startGame4 = view.findViewById(R.id.button_game4);
         Button startGame5 = view.findViewById(R.id.button_game5);
         Button startGame6 = view.findViewById(R.id.button_game6);
+        Button startGame7 = view.findViewById(R.id.button_game7);
         tilesNumText = view.findViewById(R.id.textNumTilesStart);
         Button pairingButton = view.findViewById(R.id.button_start);
         pairingButton.setOnClickListener(p->paring(pairingButton));
@@ -58,6 +59,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         startGame4.setOnClickListener(v-> startGameFour());
         startGame5.setOnClickListener(v-> startGameFive());
         startGame6.setOnClickListener(v-> startGameSix());
+        startGame7.setOnClickListener(v-> startGameSeven());
     }
 
     private void startGameFour() {
@@ -82,6 +84,16 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
 
     private void startGameSix() {
         nav.navigate(R.id.action_mainFragment_to_startGame6);
+       /* if(numOfTiles>0){
+            nav.navigate(R.id.action_mainFragment_to_startGame4);
+        }
+        else{
+            Toast.makeText(getContext(), "Please, check if the tiles are connected.", Toast.LENGTH_SHORT).show();
+        }*/
+    }
+
+    private void startGameSeven() {
+        nav.navigate(R.id.action_mainFragment_to_startGame7);
        /* if(numOfTiles>0){
             nav.navigate(R.id.action_mainFragment_to_startGame4);
         }

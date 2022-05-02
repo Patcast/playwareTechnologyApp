@@ -1,5 +1,10 @@
 package pat.international.playwaretwo.ChaseTheLight;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +20,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.livelife.motolibrary.AntData;
 import com.livelife.motolibrary.GameType;
 import com.livelife.motolibrary.MotoConnection;
 import com.livelife.motolibrary.OnAntEventListener;
@@ -36,6 +42,26 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
     NavController nav;
     View v;
     boolean register = false;
+    private long time_press = 0;
+
+    private String randomNote = "l";
+    private String note_list[] = {"a","b","c","d","e","f","g"};
+
+    private String partition[] = {"e","e","e","e",
+            "e","e","e","g","c","d","e","f","f","f","f","e","e","e","e","e","d","d","e","d","g"};
+
+    private Integer note_count = 0;
+
+    private SoundPool soundPool;
+    private Integer integerSoundIDa;
+    private Integer integerSoundIDb;
+    private Integer integerSoundIDc;
+    private Integer integerSoundIDd;
+    private Integer integerSoundIDe;
+    private Integer integerSoundIDf;
+    private Integer integerSoundIDg;
+
+    private float floatSpeed = 1.0f;
 
 
 
@@ -50,6 +76,19 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
         tilesNumText = v.findViewById(R.id.textNumTiles);
         gt_container = v.findViewById(R.id.game_type_container);
         scoreText = v.findViewById(R.id.textScore);
+
+        SoundPool.Builder builder = new SoundPool.Builder();
+        soundPool = builder.build();
+
+
+        integerSoundIDa = soundPool.load(getContext(), R.raw.a3, 1);
+        integerSoundIDb = soundPool.load(getContext(), R.raw.b3, 1);
+        integerSoundIDc = soundPool.load(getContext(), R.raw.c3, 1);
+        integerSoundIDd = soundPool.load(getContext(), R.raw.d3, 1);
+        integerSoundIDe = soundPool.load(getContext(), R.raw.e3, 1);
+        integerSoundIDf = soundPool.load(getContext(), R.raw.f3, 1);
+        integerSoundIDg = soundPool.load(getContext(), R.raw.g3, 1);
+
         return v;
     }
 
@@ -101,6 +140,48 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
         chaseTheLightClass.stopGame();
     }
 
+    public void button_play_note(float speed) {
+        String randomNote = partition[note_count];
+        note_count = note_count + 1;
+        if (note_count > 24){
+            note_count=0;
+        }
+        if (randomNote == "a") {
+
+            soundPool.play(integerSoundIDa, 1, 1, 1, 0, speed*floatSpeed);
+            soundPool.setLoop(integerSoundIDa,4);
+        }
+        if (randomNote == "b") {
+
+            soundPool.play(integerSoundIDb, 1, 1, 1, 0, speed*floatSpeed);
+            soundPool.setLoop(integerSoundIDb,4);
+        }
+        if (randomNote == "c") {
+
+            soundPool.play(integerSoundIDc, 1, 1, 1, 0, speed*floatSpeed);
+            soundPool.setLoop(integerSoundIDc,4);
+        }
+        if (randomNote == "d") {
+
+            soundPool.play(integerSoundIDd, 1, 1, 1, 0, speed*floatSpeed);
+            soundPool.setLoop(integerSoundIDd,4);
+        }
+        if (randomNote == "e") {
+
+            soundPool.play(integerSoundIDe, 1, 1, 1, 0, speed*floatSpeed);
+            soundPool.setLoop(integerSoundIDe,4);
+        }
+        if (randomNote == "f") {
+
+            soundPool.play(integerSoundIDf, 1, 1, 1, 0, speed*floatSpeed);
+            soundPool.setLoop(integerSoundIDf,4);
+        }
+        if (randomNote == "g") {
+
+            soundPool.play(integerSoundIDg, 1, 1, 1, 0, speed*floatSpeed);
+            soundPool.setLoop(integerSoundIDg,4);
+        }
+    }
 
     private void tilesExecution(){
         for (final GameType gt : chaseTheLightClass.getGameTypes())
@@ -125,6 +206,7 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
             @Override
             public void onGameScoreEvent(int i, int i1)
             {
+                button_play_note(1);
             }
             @Override
             public void onGameStopEvent()
@@ -154,7 +236,31 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
     @Override
     public void onMessageReceived(byte[] bytes, long l) {
         chaseTheLightClass.addEvent(bytes);
-    }
+        int event = AntData.getCommand(bytes);
+        if (event == AntData.EVENT_RELEASE){
+            System.out.println("released");
+        if (randomNote == "a") {
+            soundPool.resume(integerSoundIDa);
+        }
+        if (randomNote == "b") {
+            soundPool.resume(integerSoundIDb);
+        }
+        if (randomNote == "c") {
+            soundPool.resume(integerSoundIDc);
+        }
+        if (randomNote == "d") {
+            soundPool.resume(integerSoundIDd);
+        }
+        if (randomNote == "e") {
+            soundPool.resume(integerSoundIDe);
+        }
+        if (randomNote == "f") {
+            soundPool.resume(integerSoundIDf);
+        }
+        if (randomNote == "g") {
+            soundPool.resume(integerSoundIDg);
+        }
+    }}
 
     @Override
     public void onAntServiceConnected() {

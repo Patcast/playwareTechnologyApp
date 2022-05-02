@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_mainFragment_to_startGame6"
             app:destination="@id/startGame6" />
+        <action
+            android:id="@+id/action_mainFragment_to_startGame7"
+            app:destination="@id/startGame7" />
     </fragment>
     <fragment
         android:id="@+id/startChase"
@@ -86,4 +89,10 @@
             android:id="@+id/action_startGame6_to_endChase"
             app:destination="@id/endChase" />
     </fragment>
+
+    <fragment
+        android:id="@+id/startGame7"
+        android:name="pat.international.playwaretwo.Tone.SoundPlay"
+        android:label="fragment_start_game_seven"
+        tools:layout="@layout/fragment_start_game_seven"></fragment>
 </navigation>
