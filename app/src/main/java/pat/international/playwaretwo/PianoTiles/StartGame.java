@@ -1,5 +1,4 @@
-package pat.international.playwaretwo;
-
+package pat.international.playwaretwo.PianoTiles;
 
 import android.os.Bundle;
 
@@ -13,26 +12,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.livelife.motolibrary.GameType;
 import com.livelife.motolibrary.MotoConnection;
 import com.livelife.motolibrary.OnAntEventListener;
 
+import pat.international.playwaretwo.GameCountObserver;
+import pat.international.playwaretwo.HomeActivity;
+import pat.international.playwaretwo.R;
 
-public class HomeFragment extends Fragment implements OnAntEventListener {
 
-        private MotoConnection connection;
-        private boolean isPairing = false;
-        private TextView tilesNumText;
-        private int numOfTiles;
-        private NavController nav;
+public class StartGame extends Fragment implements OnAntEventListener{
+
+
+    MotoConnection connection = MotoConnection.getInstance();
+    LinearLayout gt_container;
+
+    TextView gameText,tilesNumText,scoreText;
+    Button level1Btn, level2Btn, level3Btn ;
+    int score = 0;
+    NavController nav;
+    View v;
+    boolean register = false;
+    private boolean isPairing = false;
+    private int numOfTiles;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        return inflater.inflate(R.layout.fragment_start_chase, container, false);
     }
 
     @Override
@@ -43,34 +54,38 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         connection.saveRfFrequency(68); // See the back of your tile for your group’s RF
         connection.setDeviceId(7); //Your group number
         //connection.registerListener(this);
-
-        Button startGame = view.findViewById(R.id.startgame);
-        Button startLeaderboard = view.findViewById(R.id.leaderboard);
-        Button startChallenges = view.findViewById(R.id.challenges);
+        int numberOfTiles = connection.connectedTiles.size();
+        Button level1 = view.findViewById(R.id.level1);
+        Button level2 = view.findViewById(R.id.level2);
+        Button level3 = view.findViewById(R.id.level3);
+        tilesNumText = v.findViewById(R.id.NumberOfTiles);
         nav = Navigation.findNavController(view);
-        startGame.setOnClickListener(v-> startGamePiano());
-        startLeaderboard.setOnClickListener(v-> startLeaderboardScreen());
-        startChallenges.setOnClickListener(v-> startChallengesScreen());
+        level1.setOnClickListener(v-> startlevel1());
+        level2.setOnClickListener(v-> startlevel2());
+        level3.setOnClickListener(v-> startlevel3());
+        if (numberOfTiles!=4){
+            tilesNumText.setText("You have"+String.valueOf(numberOfTiles)+" :(");
+
+        }
+        if (numberOfTiles==4){
+            tilesNumText.setText("You have"+String.valueOf(numberOfTiles)+" :)");
+
+        }
     }
 
 
-
-    private void startAssEight() {
-        nav.navigate(R.id.action_mainFragment_to_listMain);
-    }
 
     // I have problems reestablishing the connection, how often do I need to pair.
-    private void startGamePiano(){
-            nav.navigate(R.id.action_mainFragment_to_startGame);
-        }
-
-    private void startLeaderboardScreen(){
-        nav.navigate(R.id.action_mainFragment_to_listMain);
+    private void startlevel1(){
+        nav.navigate(R.id.action_startGame_to_pianoTilesScreen);
+    }
+    private void startlevel2(){
+        nav.navigate(R.id.action_startGame_to_pianoTilesScreen);
+    }
+    private void startlevel3(){
+        nav.navigate(R.id.action_startGame_to_pianoTilesScreen);
     }
 
-    private void startChallengesScreen(){
-        nav.navigate(R.id.action_mainFragment_to_startGame);
-    }
 
     @Override
     public void onStart() {
@@ -111,4 +126,5 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         numOfTiles = i;
         tilesNumText.setText("Number of Tiles connected: "+numOfTiles);
     }
+
 }

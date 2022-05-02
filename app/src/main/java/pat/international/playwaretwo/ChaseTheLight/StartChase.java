@@ -130,9 +130,6 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
             public void onGameStopEvent()
             {
                 chaseTheLightClass.stopGame();
-                StartChaseDirections.ActionStartChaseToEndChase action = StartChaseDirections.actionStartChaseToEndChase();
-                action.setGameCount(score);
-                Navigation.findNavController(v).navigate(action);
             }
 
             @Override

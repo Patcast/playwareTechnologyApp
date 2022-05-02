@@ -51,6 +51,19 @@
         app:layout_constraintTop_toBottomOf="@id/level2" />
 
     <TextView
+        android:id="@+id/NumberOfTiles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="You need four Tiles :("
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/level3"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,6 +74,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/level3" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

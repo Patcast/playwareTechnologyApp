@@ -1,4 +1,4 @@
-
+import javax.naming.Binding
 
 /*dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)

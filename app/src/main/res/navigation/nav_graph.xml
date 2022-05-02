@@ -11,19 +11,19 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_startChase"
-            app:destination="@id/startChase" />
-        <action
             android:id="@+id/action_mainFragment_to_listMain"
             app:destination="@id/listMain" />
+        <action
+            android:id="@+id/action_mainFragment_to_startGame"
+            app:destination="@id/startGame" />
     </fragment>
     <fragment
-        android:id="@+id/startChase"
-        android:name="pat.international.playwaretwo.ChaseTheLight.StartChase"
-        android:label="fragment_start_chase"
+        android:id="@+id/startGame"
+        android:name="pat.international.playwaretwo.PianoTiles.StartGame"
+        android:label="fragment_start_game"
         tools:layout="@layout/fragment_start_chase" >
         <action
-            android:id="@+id/action_startChase_to_pianoTilesScreen"
+            android:id="@+id/action_startGame_to_pianoTilesScreen"
             app:destination="@id/pianoTilesScreen" />
     </fragment>
     <fragment
