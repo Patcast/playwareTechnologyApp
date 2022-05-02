@@ -7,98 +7,79 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <Button
-        android:id="@+id/button_start"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Pairing"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="Piano Tiles"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="324dp"
+        android:layout_height="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player Name: "
+        app:layout_constraintBottom_toTopOf="@+id/startgame"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintVertical_bias="0.664" />
 
     <Button
-        android:id="@+id/button_game3"
+        android:id="@+id/connect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Game 3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="640dp"
+        android:text="Connect"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_start"
-        app:layout_constraintVertical_bias="0.085" />
-
-    <Button
-        android:id="@+id/button_game4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Game 4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_game3"
-        app:layout_constraintVertical_bias="0.05" />
-
-    <Button
-        android:id="@+id/button_game5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Game 5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_game4"
-        app:layout_constraintVertical_bias="0.05" />
-
-    <Button
-        android:id="@+id/button_game6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Game 6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_game5"
-        app:layout_constraintVertical_bias="0.05" />
-
-    <Button
-        android:id="@+id/button_ass8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Challenges 8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_game6"
-        app:layout_constraintVertical_bias="0.05" />
-
-    <TextView
-        android:id="@+id/textNumTilesStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Number of Tiles connected: 0 "
-        android:textColor="@color/TextColor1"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_start"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_piano"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Piano Dance"
+        android:id="@+id/startgame"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="404dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Start Game "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/challenges"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#F44336"
+        android:text="Challenges"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNumTilesStart" />
+        app:layout_constraintTop_toBottomOf="@+id/startgame"
+        app:layout_constraintVertical_bias="0.145" />
+
+    <Button
+        android:id="@+id/leaderboard"
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#E6B729"
+        android:text="Leaderboard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startgame"
+        app:layout_constraintVertical_bias="0.531" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
