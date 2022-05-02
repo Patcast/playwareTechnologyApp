@@ -79,6 +79,18 @@
         app:layout_constraintTop_toBottomOf="@+id/button_game6"
         app:layout_constraintVertical_bias="0.05" />
 
+    <Button
+        android:id="@+id/button_project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_game7"
+        app:layout_constraintVertical_bias="0.05" />
+
     <TextView
         android:id="@+id/textNumTilesStart"
         android:layout_width="wrap_content"
