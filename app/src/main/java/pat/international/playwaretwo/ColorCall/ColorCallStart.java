@@ -56,7 +56,7 @@ public class ColorCallStart extends Fragment implements OnAntEventListener, Game
 
 
         endGameBtn = v.findViewById(R.id.button_end);
-        gameText = v.findViewById(R.id.textGame);
+            gameText = v.findViewById(R.id.textGame);
         tilesNumText = v.findViewById(R.id.textNumTiles);
         gt_container = v.findViewById(R.id.game_type_container);
         scoreText = v.findViewById(R.id.textScore);

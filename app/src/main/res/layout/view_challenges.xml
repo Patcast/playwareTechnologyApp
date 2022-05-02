@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="93dp" />
+        tools:layout_editor_absoluteY="93dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/simulateGetGameSessions"
@@ -18,7 +19,8 @@
         android:layout_height="wrap_content"
         android:text="get game session"
         tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="121dp" />
+        tools:layout_editor_absoluteY="121dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/simulatePostGameSession"
@@ -26,5 +28,6 @@
         android:layout_height="wrap_content"
         android:text="post game session"
         tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="177dp" />
+        tools:layout_editor_absoluteY="177dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

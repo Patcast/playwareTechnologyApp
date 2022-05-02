@@ -23,11 +23,11 @@
             android:id="@+id/action_mainFragment_to_startGame6"
             app:destination="@id/startGame6" />
         <action
-            android:id="@+id/action_mainFragment_to_listMain"
-            app:destination="@id/listMain" />
+            android:id="@+id/action_mainFragment_to_startGame7"
+            app:destination="@id/startGame7" />
         <action
-            android:id="@+id/action_mainFragment_to_pianoTilesScreen"
-            app:destination="@id/pianoTilesScreen" />
+            android:id="@+id/action_mainFragment_to_startProject"
+            app:destination="@id/startProject" />
     </fragment>
     <fragment
         android:id="@+id/startChase"
@@ -92,14 +92,37 @@
             android:id="@+id/action_startGame6_to_endChase"
             app:destination="@id/endChase" />
     </fragment>
+
     <fragment
-        android:id="@+id/listMain"
-        android:name="pat.international.playwaretwo.ass8.ListMain"
-        android:label="fragment_list_main"
-        tools:layout="@layout/fragment_list_main" />
+        android:id="@+id/startGame7"
+        android:name="pat.international.playwaretwo.Tone.SoundPlay"
+        android:label="fragment_start_game_seven"
+        tools:layout="@layout/fragment_start_game_seven"></fragment>
+
+
     <fragment
-        android:id="@+id/pianoTilesScreen"
-        android:name="pat.international.playwaretwo.PianoTiles.PianoTilesScreen"
-        android:label="fragment_piano_tiles_screen"
-        tools:layout="@layout/fragment_piano_tiles_screen" />
+        android:id="@+id/startProject"
+        android:name="pat.international.playwaretwo.Project.project_home"
+        android:label="fragment_start_game_seven"
+        tools:layout="@layout/fragment_home_project">
+        <action
+            android:id="@+id/action_startProject_to_startGameProject"
+            app:destination="@id/startGameProject" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/startPianoTiles"
+        android:name="pat.international.playwaretwo.Project.PianoTiles"
+        android:label="fragment_start_game"
+        tools:layout="@layout/piano_tiles_screen"></fragment>
+
+    <fragment
+        android:id="@+id/startGameProject"
+        android:name="pat.international.playwaretwo.Project.StartGame"
+        android:label="fragment_start_game_seven"
+        tools:layout="@layout/fragment_start_game">
+        <action
+            android:id="@+id/action_startGameProject_to_startPianoTiles"
+            app:destination="@id/startPianoTiles" />
+    </fragment>
 </navigation>
