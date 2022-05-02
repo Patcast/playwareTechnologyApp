@@ -10,10 +10,10 @@
 }*/
 rootProject.name = "playwareTwo"
 include ':app'
-setBinding(new Binding([gradle: this]))                                 // new
+/*setBinding(new Binding([gradle: this]))                                 // new
 evaluate(new File(                                                      // new
         settingsDir.parentFile,                                               // new
         'pianoflutter/.android/include_flutter.groovy'                          // new
-))
+))*/
 
 

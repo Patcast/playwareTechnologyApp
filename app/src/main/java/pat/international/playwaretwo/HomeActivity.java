@@ -4,9 +4,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -19,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         ColorDrawable colorDrawable = new ColorDrawable(ContextCompat.getColor(this, R.color.toolBar));
         actionBar.setBackgroundDrawable(colorDrawable);// don't worry about this
-
+        //View flutter = Flutter.createView()
     }
+
 }
