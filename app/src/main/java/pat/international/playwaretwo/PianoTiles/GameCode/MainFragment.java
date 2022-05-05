@@ -112,14 +112,14 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
         //this.mainFragmentPresenter.checkScore(textButton);
     }
 
-/*    public void onAttach(Context context){
+   public void onAttach(Context context){
         super.onAttach(context);
         if(context instanceof FragmentListener){
             this.fragmentListener = (FragmentListener) context;
         } else{
             throw new ClassCastException(context + " must implement FragmentListener");
         }
-    }*/
+    }
 
     @Override
     public void updateCanvas(Canvas canvas) {
