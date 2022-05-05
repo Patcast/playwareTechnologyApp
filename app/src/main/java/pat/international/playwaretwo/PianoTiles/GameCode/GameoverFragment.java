@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import pat.international.playwaretwo.ChaseTheLight.EndChaseArgs;
 import pat.international.playwaretwo.R;
 
 public class GameoverFragment extends Fragment implements GameoverFragmentPresenter.IGameoverFragment, View.OnClickListener {
@@ -39,7 +40,7 @@ public class GameoverFragment extends Fragment implements GameoverFragmentPresen
         this.saveButton = view.findViewById(R.id.save_name);
 
         this.db = new DBHandler(this.getActivity());
-        this.gameoverFragmentPresenter = new GameoverFragmentPresenter(this.getArguments().getInt("score", 0), this, this.db, this.toast);
+        this.gameoverFragmentPresenter = new GameoverFragmentPresenter(GameoverFragmentArgs.fromBundle(getArguments()).getScore(), this, this.db, this.toast);
 
         this.playAgain.setOnClickListener(this);
         this.backMenu.setOnClickListener(this);
@@ -50,14 +51,14 @@ public class GameoverFragment extends Fragment implements GameoverFragmentPresen
         return view;
     }
 
-    public void onAttach(Context context){
+/*    public void onAttach(Context context){
         super.onAttach(context);
         if(context instanceof FragmentListener){
             this.fragmentListener = (FragmentListener) context;
         } else{
             throw new ClassCastException(context.toString() + " must implement FragmentListener");
         }
-    }
+    }*/
 
     public static GameoverFragment newInstance(int score){
         GameoverFragment fragment = new GameoverFragment();

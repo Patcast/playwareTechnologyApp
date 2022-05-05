@@ -21,7 +21,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import pat.international.playwaretwo.ChaseTheLight.StartChaseDirections;
 import pat.international.playwaretwo.R;
 
 
@@ -133,8 +135,11 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.IMai
 
     @Override
     public void gameOver(int score) {
-        this.fragmentListener.setScore(score);
+        //this.fragmentListener.setScore(score);
         //this.fragmentListener.changePage(2);
+        MainFragmentDirections.ActionMainFragment2ToGameoverFragment action = MainFragmentDirections.actionMainFragment2ToGameoverFragment();
+        action.setScore(score);
+        Navigation.findNavController(getView()).navigate(action);
     }
 
     @Override
