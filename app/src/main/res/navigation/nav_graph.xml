@@ -113,7 +113,7 @@
     <fragment
         android:id="@+id/startPianoTiles"
         android:name="pat.international.playwaretwo.Project.PianoTiles"
-        android:label="fragment_start_game"
+        android:label="piano_tiles_screen"
         tools:layout="@layout/piano_tiles_screen"></fragment>
 
     <fragment

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.livelife.motolibrary.MotoConnection;
 import com.livelife.motolibrary.OnAntEventListener;
@@ -46,6 +47,7 @@ public class StartGame extends Fragment implements OnAntEventListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_start_game, container, false);
+
     }
 
     @Override
@@ -67,6 +69,7 @@ public class StartGame extends Fragment implements OnAntEventListener{
         level1.setOnClickListener(v-> startlevel1());
         level2.setOnClickListener(v-> startlevel2());
         level3.setOnClickListener(v-> startlevel3());
+
         if (numberOfTiles!=4){
             tilesNumText.setText("You dont have enough tiles :( :"+String.valueOf(numberOfTiles));
 
