@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        return inflater.inflate(R.layout.fragment_main_menu, container, false);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         startGame5.setOnClickListener(v-> startGameFive());
         startGame6.setOnClickListener(v-> startGameSix());
         startAss8.setOnClickListener(v-> startAssEight());
-        startPianoDance.setOnClickListener(v-> nav.navigate(R.id.action_mainFragment_to_pianoTilesScreen));
+        startPianoDance.setOnClickListener(v-> nav.navigate(R.id.action_mainFragment_to_homeFragment));
     }
 
 

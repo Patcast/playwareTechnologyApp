@@ -9,7 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="pat.international.playwaretwo.HomeFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main_menu" >
         <action
             android:id="@+id/action_mainFragment_to_startChase"
             app:destination="@id/startChase" />
@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_mainFragment_to_pianoTilesScreen"
             app:destination="@id/pianoTilesScreen" />
+        <action
+            android:id="@+id/action_mainFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/startChase"
@@ -102,4 +105,30 @@
         android:name="pat.international.playwaretwo.PianoTiles.PianoTilesScreen"
         android:label="fragment_piano_tiles_screen"
         tools:layout="@layout/fragment_piano_tiles_screen" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="pat.international.playwaretwo.PianoTiles.GameCode.HomeFragmentPiano"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_highScoreFragment"
+            app:destination="@id/highScoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="pat.international.playwaretwo.PianoTiles.GameCode.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/mainFragment2"
+        android:name="pat.international.playwaretwo.PianoTiles.GameCode.MainFragment"
+        android:label="MainFragment" />
+    <fragment
+        android:id="@+id/highScoreFragment"
+        android:name="pat.international.playwaretwo.PianoTiles.GameCode.HighScoreFragment"
+        android:label="HighScoreFragment" />
 </navigation>
