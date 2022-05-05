@@ -22,10 +22,16 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.livelife.motolibrary.MotoConnection;
+import com.livelife.motolibrary.OnAntEventListener;
+
+import pat.international.playwaretwo.ChaseTheLight.ChaseTheLightClass;
+import pat.international.playwaretwo.GameColorObserver;
+import pat.international.playwaretwo.Project.PianoTilesGame;
 import pat.international.playwaretwo.R;
 
 
-public class MainFragment extends Fragment implements MainFragmentPresenter.IMainFragment, View.OnClickListener, View.OnTouchListener, SensorEventListener {
+public class MainFragment extends Fragment implements OnAntEventListener, MainFragmentPresenter.IMainFragment, View.OnClickListener, View.OnTouchListener, SensorEventListener {
     FragmentListener fragmentListener;
     MainFragmentPresenter mainFragmentPresenter;
     Button startButton;
@@ -48,6 +54,8 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.IMai
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.fragment_main_tiles_menu, container, false);
         View toastView = inflater.inflate(R.layout.custom_toast, container, false);
         this.toast = new CustomToast(toastView, getActivity().getApplicationContext());
@@ -86,6 +94,13 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.IMai
         this.pianoC = this.soundPool.load(this.getActivity(), R.raw.piano_c, 1);
         this.pianoD = this.soundPool.load(this.getActivity(), R.raw.piano_d, 1);
         totalWidth = ivCanvas.getWidth();
+
+        connection.startMotoConnection(getContext());
+        connection.registerListener(this);
+        PianoTilesGame = new PianoTilesGame(getContext(), mainFragmentPresenter);
+        tilesExecution();
+
+        ////////
         return view;
     }
 
@@ -94,7 +109,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.IMai
         Button b = (Button) v;
         String textButton = b.getText().toString();
 
-        this.mainFragmentPresenter.checkScore(textButton);
+        //this.mainFragmentPresenter.checkScore(textButton);
     }
 
 /*    public void onAttach(Context context){
@@ -230,4 +245,111 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.IMai
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+    ///////////// GAME CODE /////////////
+
+    boolean register = false;
+
+    MotoConnection connection = MotoConnection.getInstance();
+    PianoTilesGame PianoTilesGame;
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!register){
+            //connection.startMotoConnection(getContext());
+            connection.registerListener(this);
+            register = true;
+        }
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        register = false;
+        //connection.stopMotoConnection();
+        connection.unregisterListener(this);
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        endGame();
+    }
+
+    //TODO: Call this method at the end of the song.
+    private void endGame(){
+        //connection.stopMotoConnection();
+        connection.unregisterListener(this);
+        PianoTilesGame.stopGame();
+    }
+
+    private void tilesExecution(){
+        PianoTilesGame.selectedGameType = PianoTilesGame.getGameTypes().get(0);
+        PianoTilesGame.startGame();
+        register = true;
+        PianoTilesGame.setOnGameEventListener(new ChaseTheLightClass.OnGameEventListener()
+        {
+            @Override
+            public void onGameTimerEvent(int i)
+            {
+            }
+            @Override
+            public void onGameScoreEvent(int i, int i1)
+            {
+            }
+            @Override
+            public void onGameStopEvent()
+            {
+                PianoTilesGame.stopGame();
+
+            }
+
+            @Override
+            public void onSetupMessage(String s)
+            {
+            }
+            @Override
+            public void onGameMessage(String s)
+            {
+
+            }
+            @Override
+            public void onSetupEnd()
+            {
+
+            } });
+    }
+
+
+    @Override
+    public void onMessageReceived(byte[] bytes, long l) {
+        PianoTilesGame.addEvent(bytes);
+    }
+
+    @Override
+    public void onAntServiceConnected() {
+
+    }
+
+    @Override
+    public void onNumbersOfTilesConnected(int i) {
+
+    }
+
+/*    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void notifyColor(int new_color) {
+        getActivity().runOnUiThread(() -> {
+            this.mainFragmentPresenter.checkScore(new_color);
+        });
+    }*/
+ /*   @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateColor(int new_color){
+        getActivity().runOnUiThread(() -> {
+            color= new_color;
+            colorText.setText(String.valueOf(color));
+            this.mainFragmentPresenter.checkScore(textButton);
+        });
+    }*/
 }

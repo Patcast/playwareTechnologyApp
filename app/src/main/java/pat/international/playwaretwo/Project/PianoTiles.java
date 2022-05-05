@@ -28,14 +28,9 @@ import pat.international.playwaretwo.GameCountObserver;
 import pat.international.playwaretwo.R;
 
 
-public class PianoTiles extends Fragment implements OnAntEventListener, GameCountObserver, GameColorObserver {
+public class PianoTiles extends Fragment implements OnAntEventListener, GameColorObserver {
 
-    TextView scoreText;
-    TextView colorText;
-    Button endGameBtn;
-    int score = 0;
     int color = 0;
-    NavController nav;
     boolean register = false;
     View v;
     MotoConnection connection = MotoConnection.getInstance();
@@ -44,11 +39,7 @@ public class PianoTiles extends Fragment implements OnAntEventListener, GameCoun
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.piano_tiles_screen, container, false);
-        endGameBtn = v.findViewById(R.id.button_end);
-        scoreText = v.findViewById(R.id.textScore);
-        colorText = v.findViewById(R.id.textColor);
-        return v;
+        return inflater.inflate(R.layout.piano_tiles_screen, container, false);
     }
 
     @Override
@@ -56,12 +47,7 @@ public class PianoTiles extends Fragment implements OnAntEventListener, GameCoun
         super.onViewCreated(view, savedInstanceState);
         connection.startMotoConnection(getContext());
         connection.registerListener(this);
-        nav = Navigation.findNavController(view);
-        endGameBtn.setOnClickListener(v->{
-            endGame();
-            nav.popBackStack();
-        });
-        PianoTilesGame = new PianoTilesGame(getContext(), this, this);
+        PianoTilesGame = new PianoTilesGame(getContext(), this);
         tilesExecution();
     }
 
@@ -88,6 +74,8 @@ public class PianoTiles extends Fragment implements OnAntEventListener, GameCoun
         super.onDestroy();
         endGame();
     }
+
+    //TODO: Call this method at the end of the song.
     private void endGame(){
         //connection.stopMotoConnection();
         connection.unregisterListener(this);
@@ -146,24 +134,14 @@ public class PianoTiles extends Fragment implements OnAntEventListener, GameCoun
     public void onNumbersOfTilesConnected(int i) {
 
     }
-    @Override
-    public void notifyCount(int count) {
-        updateCount(count);
-    }
-    private void updateCount(int count){
-        getActivity().runOnUiThread(() -> {
-            score= count;
-            scoreText.setText(String.valueOf(score));
-        });
-    }
 
     public void notifyColor(int new_color) {
         updateColor(new_color);
     }
     private void updateColor(int new_color){
         getActivity().runOnUiThread(() -> {
-            color= new_color;
-            colorText.setText(String.valueOf(color));
+//            color= new_color;
+//            colorText.setText(String.valueOf(color));
         });
     }
 }

@@ -23,9 +23,6 @@
             android:id="@+id/action_mainFragment_to_startGame6"
             app:destination="@id/startGame6" />
         <action
-            android:id="@+id/action_mainFragment_to_startGame7"
-            app:destination="@id/startGame7" />
-        <action
             android:id="@+id/action_mainFragment_to_startProject"
             app:destination="@id/startProject" />
         <action
@@ -34,9 +31,6 @@
         <action
             android:id="@+id/action_mainFragment_to_pianoTilesScreen"
             app:destination="@id/pianoTilesScreen" />
-        <action
-            android:id="@+id/action_mainFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/startChase"
@@ -102,12 +96,6 @@
             app:destination="@id/endChase" />
     </fragment>
 
-    <fragment
-        android:id="@+id/startGame7"
-        android:name="pat.international.playwaretwo.Tone.SoundPlay"
-        android:label="fragment_start_game_seven"
-        tools:layout="@layout/fragment_start_game_seven"></fragment>
-
 
     <fragment
         android:id="@+id/startProject"
@@ -134,8 +122,8 @@
             android:id="@+id/action_startGameProject_to_startPianoTiles"
             app:destination="@id/startPianoTiles" />
         <action
-            android:id="@+id/action_startGameProject_to_mainFragment2"
-            app:destination="@id/mainFragment2" />
+            android:id="@+id/action_startGameProject_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
     <fragment
