@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingVertical="20dp"
+    android:paddingHorizontal="10dp"
+    android:layout_height="wrap_content"
+    android:background="@color/recView"
+    android:layout_marginBottom="5dp">
+
+
+
+    <TextView
+        android:id="@+id/challenger_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="challenger name"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/challenger_name_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="challenger_name"
+        app:layout_constraintStart_toEndOf="@+id/challenger_name_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/challenged_name_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="challenged name"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challenger_name_title" />
+
+    <TextView
+        android:id="@+id/challenged_name_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="challenged_name"
+        app:layout_constraintBottom_toBottomOf="@+id/challenged_name_title"
+        app:layout_constraintStart_toEndOf="@+id/challenged_name_title"
+        app:layout_constraintTop_toTopOf="@+id/challenged_name_title" />
+
+    <TextView
+        android:id="@+id/game_id_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="game id"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/challenged_name_title" />
+
+    <TextView
+        android:id="@+id/game_id_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="game_id"
+        app:layout_constraintBottom_toBottomOf="@+id/game_id_title"
+        app:layout_constraintStart_toEndOf="@+id/game_id_title"
+        app:layout_constraintTop_toTopOf="@+id/game_id_title" />
+
+    <TextView
+        android:id="@+id/c_status_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="c status"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_id_title" />
+
+    <TextView
+        android:id="@+id/c_status_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="c_status"
+        app:layout_constraintBottom_toBottomOf="@+id/c_status_title"
+        app:layout_constraintStart_toEndOf="@+id/c_status_title" />
+
+    <TextView
+        android:id="@+id/date_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="date"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/c_status_title" />
+
+    <TextView
+        android:id="@+id/date_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="date"
+        app:layout_constraintBottom_toBottomOf="@+id/date_title"
+        app:layout_constraintStart_toEndOf="@+id/date_title"
+        app:layout_constraintTop_toTopOf="@+id/date_title" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

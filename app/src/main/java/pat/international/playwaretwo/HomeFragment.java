@@ -50,18 +50,14 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         Button startGame4 = view.findViewById(R.id.button_game4);
         Button startGame5 = view.findViewById(R.id.button_game5);
         Button startGame6 = view.findViewById(R.id.button_game6);
-        Button startGame7 = view.findViewById(R.id.button_game7);
-        Button startProject = view.findViewById(R.id.button_project);
         tilesNumText = view.findViewById(R.id.textNumTilesStart);
         Button pairingButton = view.findViewById(R.id.button_start);
         pairingButton.setOnClickListener(p->paring(pairingButton));
         nav = Navigation.findNavController(view);
-        startProject.setOnClickListener(v -> startProject());
         startGame3.setOnClickListener(v-> startGameChase());
         startGame4.setOnClickListener(v-> startGameFour());
         startGame5.setOnClickListener(v-> startGameFive());
         startGame6.setOnClickListener(v-> startGameSix());
-        startGame7.setOnClickListener(v-> startGameSeven());
     }
 
     private void startGameFour() {
@@ -102,6 +98,10 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         else{
             Toast.makeText(getContext(), "Please, check if the tiles are connected.", Toast.LENGTH_SHORT).show();
         }*/
+    }
+
+    private void startAssEight() {
+        nav.navigate(R.id.action_mainFragment_to_startProject);
     }
 
     // I have problems reestablishing the connection, how often do I need to pair.
