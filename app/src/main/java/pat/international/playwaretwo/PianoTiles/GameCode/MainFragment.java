@@ -65,15 +65,6 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
         this.startButton = view.findViewById(R.id.start_btn);
         this.score = view.findViewById(R.id.score);
         this.health = view.findViewById(R.id.health);
-        this.button0 = view.findViewById(R.id.b0);
-        this.button1 = view.findViewById(R.id.b1);
-        this.button2 = view.findViewById(R.id.b2);
-        this.button3 = view.findViewById(R.id.b3);
-
-        button0.setOnClickListener(v->playTile(v));
-        button1.setOnClickListener(v->playTile(v));
-        button2.setOnClickListener(v->playTile(v));
-        button3.setOnClickListener(v->playTile(v));
 
         this.settingsPrefSaver = new SettingsPrefSaver(this.getActivity());
         this.startButton.setOnClickListener(this);
@@ -96,32 +87,16 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
         this.pianoC = this.soundPool.load(this.getActivity(), R.raw.piano_c, 1);
         this.pianoD = this.soundPool.load(this.getActivity(), R.raw.piano_d, 1);
         totalWidth = ivCanvas.getWidth();
-
+        //////////
         connection.startMotoConnection(getContext());
         connection.registerListener(this);
         PianoTilesGame = new PianoTilesGame(getContext(), this);
         tilesExecution();
 
-        ////////
+
         return view;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    private void playTile(View v) {
-        Button b = (Button) v;
-        String textButton = b.getText().toString();
-
-        //this.mainFragmentPresenter.checkScore(textButton);
-    }
-
-/*    public void onAttach(Context context){
-        super.onAttach(context);
-        if(context instanceof FragmentListener){
-            this.fragmentListener = (FragmentListener) context;
-        } else{
-            throw new ClassCastException(context + " must implement FragmentListener");
-        }
-    }*/
 
     @Override
     public void updateCanvas(Canvas canvas) {
@@ -150,8 +125,7 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
 
     @Override
     public void gameOver(int score) {
-        //this.fragmentListener.setScore(score);
-        //this.fragmentListener.changePage(2);
+
         MainFragmentDirections.ActionMainFragment2ToGameoverFragment action = MainFragmentDirections.actionMainFragment2ToGameoverFragment();
         action.setScore(score);
         Navigation.findNavController(getView()).navigate(action);
@@ -263,7 +237,6 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
     public void onStart() {
         super.onStart();
         if(!register){
-            //connection.startMotoConnection(getContext());
             connection.registerListener(this);
             register = true;
         }
@@ -274,7 +247,6 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
     public void onStop() {
         super.onStop();
         register = false;
-        //connection.stopMotoConnection();
         connection.unregisterListener(this);
     }
     @Override
@@ -285,7 +257,6 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
 
     //TODO: Call this method at the end of the song.
     private void endGame(){
-        //connection.stopMotoConnection();
         connection.unregisterListener(this);
         PianoTilesGame.stopGame();
     }
@@ -350,12 +321,5 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
 
         });
     }
- /*   @RequiresApi(api = Build.VERSION_CODES.N)
-    private void updateColor(int new_color){
-        getActivity().runOnUiThread(() -> {
-            color= new_color;
-            colorText.setText(String.valueOf(color));
-            this.mainFragmentPresenter.checkScore(textButton);
-        });
-    }*/
+
 }

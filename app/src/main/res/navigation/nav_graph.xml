@@ -102,9 +102,10 @@
         android:name="pat.international.playwaretwo.Project.project_home"
         android:label="fragment_start_game_seven"
         tools:layout="@layout/fragment_home_project">
+
         <action
-            android:id="@+id/action_startProject_to_startGameProject"
-            app:destination="@id/startGameProject" />
+            android:id="@+id/action_startProject_to_homeFragment2"
+            app:destination="@id/homeFragment" />
     </fragment>
 
     <fragment
@@ -112,19 +113,6 @@
         android:name="pat.international.playwaretwo.Project.PianoTiles"
         android:label="piano_tiles_screen"
         tools:layout="@layout/piano_tiles_screen"></fragment>
-
-    <fragment
-        android:id="@+id/startGameProject"
-        android:name="pat.international.playwaretwo.Project.StartGame"
-        android:label="fragment_start_game_seven"
-        tools:layout="@layout/fragment_start_game">
-        <action
-            android:id="@+id/action_startGameProject_to_startPianoTiles"
-            app:destination="@id/startPianoTiles" />
-        <action
-            android:id="@+id/action_startGameProject_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
 
     <fragment
         android:id="@+id/listMain"

@@ -6,7 +6,7 @@
             <solid />
             <stroke />
             <corners
-                android:radius="25dp" />
+                android:radius="60dp" />
         </shape>
     </item>
 </ripple>

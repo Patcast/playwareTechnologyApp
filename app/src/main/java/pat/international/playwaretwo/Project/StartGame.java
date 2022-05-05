@@ -5,6 +5,7 @@ import static com.livelife.motolibrary.AntData.LED_COLOR_BLUE;
 import static com.livelife.motolibrary.AntData.LED_COLOR_GREEN;
 import static com.livelife.motolibrary.AntData.LED_COLOR_ORANGE;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import com.livelife.motolibrary.MotoConnection;
 import com.livelife.motolibrary.OnAntEventListener;
 
+import pat.international.playwaretwo.PianoTiles.GameCode.CustomToast;
 import pat.international.playwaretwo.R;
 
 
@@ -30,14 +32,8 @@ public class StartGame extends Fragment implements OnAntEventListener{
 
 
     MotoConnection connection = MotoConnection.getInstance();
-    LinearLayout gt_container;
-
-    TextView gameText,tilesNumText,scoreText;
-    Button level1Btn, level2Btn, level3Btn ;
-    int score = 0;
+    TextView tilesNumText;
     NavController nav;
-    View v;
-    boolean register = false;
     private boolean isPairing = false;
     private int numOfTiles;
 
@@ -56,7 +52,6 @@ public class StartGame extends Fragment implements OnAntEventListener{
         connection.startMotoConnection(getContext());
         connection.saveRfFrequency(68); // See the back of your tile for your group’s RF
         connection.setDeviceId(7); //Your group number
-        //connection.registerListener(this);
         int numberOfTiles = connection.connectedTiles.size();
         Button level1 = view.findViewById(R.id.level1);
         Button level2 = view.findViewById(R.id.level2);
@@ -92,7 +87,7 @@ public class StartGame extends Fragment implements OnAntEventListener{
     //TODO Check that 4 tiles are conected
 
     private void difficultySelected(){
-        nav.navigate(R.id.action_startGameProject_to_homeFragment);
+        //nav.navigate(R.id.action_startGameProject_to_homeFragment);
     }
 
 

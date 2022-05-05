@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/background">
 
@@ -10,78 +10,91 @@
         android:id="@+id/start_btn"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:textSize="40sp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:background="@drawable/start_button"
+        android:fontFamily="@font/fredoka_one"
         android:text="@string/start"
         android:textColor="@color/darkBlue"
-        android:fontFamily="@font/fredoka_one"/>
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="1dp"
         android:gravity="center"
-        android:elevation="1dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.widget.Button
             android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_margin="10px"
-            android:padding="10px"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:visibility="invisible"
+            android:layout_weight="1"
             android:background="@drawable/custom_button"
             android:backgroundTint="@color/lightBlue"
-            android:fontFamily="@font/fredoka_one"/>
+            android:fontFamily="@font/fredoka_one"
+            android:padding="10px"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:visibility="invisible" />
 
         <android.widget.Button
             android:id="@+id/health"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_margin="10px"
-            android:padding="10px"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:visibility="invisible"
             android:background="@drawable/custom_button"
             android:backgroundTint="@color/darkRed"
-            android:fontFamily="@font/fredoka_one"/>
+            android:fontFamily="@font/fredoka_one"
+            android:padding="10px"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bordered_view"/>
+            android:background="@drawable/bordered_view" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bordered_view"/>
+            android:background="@drawable/bordered_view" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bordered_view"/>
+            android:background="@drawable/bordered_view" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bordered_view"/>
+            android:background="@drawable/bordered_view" />
 
     </LinearLayout>
 
@@ -98,45 +111,20 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="100dp">
-        <Button
-            android:id="@+id/b0"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="B0"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/b1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="B1"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/b2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="B2"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/b3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="B3"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
-
-    </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:background="#4300FFB7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal" />
 
 
 
-</RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

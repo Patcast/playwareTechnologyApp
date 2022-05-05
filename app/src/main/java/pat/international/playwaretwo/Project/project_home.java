@@ -27,8 +27,6 @@ public class project_home extends Fragment implements OnAntEventListener {
 
     private MotoConnection connection;
     private boolean isPairing = false;
-    private TextView tilesNumText;
-    private int numOfTiles;
     private NavController nav;
 
 
@@ -62,15 +60,15 @@ public class project_home extends Fragment implements OnAntEventListener {
 
     // I have problems reestablishing the connection, how often do I need to pair.
     private void startGamePiano(){
-        nav.navigate(R.id.action_startProject_to_startGameProject);
+        nav.navigate(R.id.action_startProject_to_homeFragment2);
     }
 
     private void startLeaderboardScreen(){
-        nav.navigate(R.id.action_startProject_to_startGameProject);
+        //nav.navigate(R.id.action_startProject_to_startGameProject);
     }
 
     private void startChallengesScreen(){
-        nav.navigate(R.id.action_startProject_to_startGameProject);
+        //nav.navigate(R.id.action_startProject_to_startGameProject);
     }
 
     @Override

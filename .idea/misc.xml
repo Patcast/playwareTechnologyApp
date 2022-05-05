@@ -10,14 +10,18 @@
         <entry key="..\:/DTU-Courses/DTU-Playware/studio_course/playwareTwo/app/src/main/res/layout/fragment_start_game_five.xml" value="0.2" />
         <entry key="..\:/DTU-Courses/DTU-Playware/studio_course/playwareTwo/app/src/main/res/layout/fragment_start_game_four.xml" value="0.10400000000000001" />
         <entry key="..\:/DTU-Courses/DTU-Playware/studio_course/playwareTwo/app/src/main/res/layout/fragment_start_game_six.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/custom_button.xml" value="0.1875" />
         <entry key="app/src/main/res/drawable/ic_baseline_emoji_people_24.xml" value="0.2490740740740741" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_run_game.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_end_chase.xml" value="0.24322916666666666" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home_project.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/fragment_main_menu.xml" value="0.24322916666666666" />
+        <entry key="app/src/main/res/layout/fragment_main_tiles_menu.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/fragment_score.xml" value="0.24322916666666666" />
         <entry key="app/src/main/res/layout/fragment_start_chase.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_start_game.xml" value="0.24322916666666666" />

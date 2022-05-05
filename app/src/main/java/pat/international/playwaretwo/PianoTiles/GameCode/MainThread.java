@@ -70,11 +70,11 @@ public class MainThread extends Thread{
         if(this.isClicked) return;
 
         if(coordinateOfColumn >= this.start.x && coordinateOfColumn <= this.start.x + this.viewSize.x/4){ // Checks if it was clicked on the right column
-            //if(tap.y >= this.start.y && tap.y <= this.start.y + this.viewSize.y/4){ // Checks if it was clicked at the right y location
+            if(  this.start.y >= this.viewSize.y*2/4){ // Checks if it was clicked at the right y location
                 this.threadHandler.addScore(this.pos);
                 this.threadHandler.clearRect(new PointF(this.start.x, this.start.y));
                 this.isClicked = true;
-           // }
+            }
         }
     }
 
