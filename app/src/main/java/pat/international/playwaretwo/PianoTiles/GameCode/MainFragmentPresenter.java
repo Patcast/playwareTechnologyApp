@@ -23,7 +23,7 @@ import static com.livelife.motolibrary.AntData.LED_COLOR_ORANGE;
 import pat.international.playwaretwo.GameColorObserver;
 
 
-public class MainFragmentPresenter implements GameColorObserver {
+public class MainFragmentPresenter {
     IMainFragment ui;
     Bitmap bitmap;
     Canvas canvas;
@@ -127,7 +127,7 @@ public class MainFragmentPresenter implements GameColorObserver {
         }
     }*/
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     public void checkScore(int tileColor){// pass Color of Tile
         float coordinateOfColumnActivated;
         switch(tileColor) {
@@ -199,13 +199,14 @@ public class MainFragmentPresenter implements GameColorObserver {
         this.ui.updateHealth(this.health);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void notifyColor(int new_color) {
+
+ /*   public void notifyColor(int new_color) {
 //            color= new_color;
 //            colorText.setText(String.valueOf(color));
             checkScore(new_color);
+            Log.d("COLOR:",String.valueOf(new_color));
     }
-
+*/
     public interface IMainFragment{
         void updateCanvas(Canvas canvas);
         void initiateCanvas(Bitmap bitmap, Canvas canvas);

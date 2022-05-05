@@ -14,6 +14,7 @@ public class HighScoreFragmentPresenter {
 
     public void loadData(int limit){
         this.list = this.db.getHighScore(limit);
+
         this.ui.updateList(this.list);
     }
 

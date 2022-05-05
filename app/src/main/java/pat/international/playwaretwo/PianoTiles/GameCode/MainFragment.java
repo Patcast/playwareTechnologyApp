@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,7 +33,7 @@ import pat.international.playwaretwo.Project.PianoTilesGame;
 import pat.international.playwaretwo.R;
 
 
-public class MainFragment extends Fragment implements OnAntEventListener, MainFragmentPresenter.IMainFragment, View.OnClickListener, View.OnTouchListener, SensorEventListener {
+public class MainFragment extends Fragment implements OnAntEventListener, MainFragmentPresenter.IMainFragment, View.OnClickListener, View.OnTouchListener, SensorEventListener,GameColorObserver{
     FragmentListener fragmentListener;
     MainFragmentPresenter mainFragmentPresenter;
     Button startButton;
@@ -98,7 +99,7 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
 
         connection.startMotoConnection(getContext());
         connection.registerListener(this);
-        PianoTilesGame = new PianoTilesGame(getContext(), mainFragmentPresenter);
+        PianoTilesGame = new PianoTilesGame(getContext(), this);
         tilesExecution();
 
         ////////
@@ -342,12 +343,13 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
 
     }
 
-/*    @RequiresApi(api = Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void notifyColor(int new_color) {
         getActivity().runOnUiThread(() -> {
             this.mainFragmentPresenter.checkScore(new_color);
+
         });
-    }*/
+    }
  /*   @RequiresApi(api = Build.VERSION_CODES.N)
     private void updateColor(int new_color){
         getActivity().runOnUiThread(() -> {

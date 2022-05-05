@@ -75,13 +75,13 @@ public class PianoTilesGame extends Game {
         super.onGameUpdate(message);
         int event = AntData.getCommand(message);
         int color= AntData.getColorFromPress(message);
-        if (event == AntData.EVENT_PRESS && color==randomTileColor)
+        if (event == AntData.EVENT_PRESS)
         {
             gameCount++; //TODO: Maybe we can add something to penalize players.
             //countObserver.notifyCount(gameCount);
             //incrementPlayerScore(1,0);
             //selectRandomTileColor();
-            colorObserver.notifyColor(randomTileColor);
+            colorObserver.notifyColor(color);
         }
 /*        if (event == AntData.EVENT_PRESS && color!=randomTileColor)
         {

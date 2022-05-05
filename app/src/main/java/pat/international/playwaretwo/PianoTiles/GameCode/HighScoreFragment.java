@@ -32,7 +32,6 @@ public class HighScoreFragment extends Fragment implements HighScoreFragmentPres
         this.listView = view.findViewById(R.id.lst_fragment_score);
         this.listView.setAdapter(this.adapter);
         this.highScoreFragmentPresenter = new HighScoreFragmentPresenter(this, this.db);
-
         this.highScoreFragmentPresenter.loadData(10);
 
         return view;

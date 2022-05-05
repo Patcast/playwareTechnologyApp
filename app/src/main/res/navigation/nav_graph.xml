@@ -157,11 +157,26 @@
     <fragment
         android:id="@+id/mainFragment2"
         android:name="pat.international.playwaretwo.PianoTiles.GameCode.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment2_to_gameoverFragment"
+            app:destination="@id/gameoverFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/highScoreFragment"
         android:name="pat.international.playwaretwo.PianoTiles.GameCode.HighScoreFragment"
         android:label="HighScoreFragment" />
+    <fragment
+        android:id="@+id/gameoverFragment"
+        android:name="pat.international.playwaretwo.PianoTiles.GameCode.GameoverFragment"
+        android:label="GameoverFragment" >
+        <argument
+            android:name="score"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 
 
 </navigation>
