@@ -1,142 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background">
+    tools:context=".HomeFragment">
 
-    <android.widget.Button
-        android:id="@+id/start_btn"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:textSize="40sp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/start_button"
-        android:text="@string/start"
-        android:textColor="@color/darkBlue"
-        android:fontFamily="@font/fredoka_one"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:elevation="1dp">
+        android:text="Start Pairing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
 
-        <android.widget.Button
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="10px"
-            android:padding="10px"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:visibility="invisible"
-            android:background="@drawable/custom_button"
-            android:backgroundTint="@color/lightBlue"
-            android:fontFamily="@font/fredoka_one"/>
+    <Button
+        android:id="@+id/button_game3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game 3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_start"
+        app:layout_constraintVertical_bias="0.085" />
 
-        <android.widget.Button
-            android:id="@+id/health"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10px"
-            android:padding="10px"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:visibility="invisible"
-            android:background="@drawable/custom_button"
-            android:backgroundTint="@color/darkRed"
-            android:fontFamily="@font/fredoka_one"/>
+    <Button
+        android:id="@+id/button_game4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game 4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_game3"
+        app:layout_constraintVertical_bias="0.05" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/button_game5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game 5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_game4"
+        app:layout_constraintVertical_bias="0.05" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/button_game6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game 6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_game5"
+        app:layout_constraintVertical_bias="0.05" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bordered_view"/>
+    <Button
+        android:id="@+id/button_ass8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Challenges 8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_game6"
+        app:layout_constraintVertical_bias="0.05" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bordered_view"/>
+    <TextView
+        android:id="@+id/textNumTilesStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number of Tiles connected: 0 "
+        android:textColor="@color/TextColor1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bordered_view"/>
+    <Button
+        android:id="@+id/button_piano"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Piano Dance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNumTilesStart" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bordered_view"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/ivCanvas"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="100dp">
-        <Button
-            android:id="@+id/b0"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="B0"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/b1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="B1"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/b2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="B2"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
-        <Button
-            android:id="@+id/b3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="B3"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

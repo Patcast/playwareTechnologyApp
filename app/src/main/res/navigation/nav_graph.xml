@@ -9,7 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="pat.international.playwaretwo.HomeFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main_menu" >
+        tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_startChase"
             app:destination="@id/startChase" />

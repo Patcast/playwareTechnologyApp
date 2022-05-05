@@ -48,7 +48,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.IMai
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_tiles_menu, container, false);
         View toastView = inflater.inflate(R.layout.custom_toast, container, false);
         this.toast = new CustomToast(toastView, getActivity().getApplicationContext());
         this.ivCanvas = view.findViewById(R.id.ivCanvas);
