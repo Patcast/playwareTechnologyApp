@@ -126,6 +126,8 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         connection.registerListener(this);
     }
 
+
+
     @Override
     public void onStop() {
         super.onStop();

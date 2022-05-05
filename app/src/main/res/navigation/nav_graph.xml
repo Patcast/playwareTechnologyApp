@@ -108,6 +108,9 @@
         <action
             android:id="@+id/action_startProject_to_startGameProject"
             app:destination="@id/startGameProject" />
+        <action
+            android:id="@+id/action_startProject_to_listMain"
+            app:destination="@id/listMain" />
     </fragment>
 
     <fragment
@@ -125,4 +128,8 @@
             android:id="@+id/action_startGameProject_to_startPianoTiles"
             app:destination="@id/startPianoTiles" />
     </fragment>
+    <fragment
+        android:id="@+id/listMain"
+        android:name="pat.international.playwaretwo.http.ListMain"
+        android:label="ListMain" />
 </navigation>

@@ -81,13 +81,13 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
         soundPool = builder.build();
 
 
-        integerSoundIDa = soundPool.load(getContext(), R.raw.a3, 1);
-        integerSoundIDb = soundPool.load(getContext(), R.raw.b3, 1);
-        integerSoundIDc = soundPool.load(getContext(), R.raw.c3, 1);
-        integerSoundIDd = soundPool.load(getContext(), R.raw.d3, 1);
-        integerSoundIDe = soundPool.load(getContext(), R.raw.e3, 1);
-        integerSoundIDf = soundPool.load(getContext(), R.raw.f3, 1);
-        integerSoundIDg = soundPool.load(getContext(), R.raw.g3, 1);
+//        integerSoundIDa = soundPool.load(getContext(), R.raw.a3, 1);
+//        integerSoundIDb = soundPool.load(getContext(), R.raw.b3, 1);
+//        integerSoundIDc = soundPool.load(getContext(), R.raw.c3, 1);
+//        integerSoundIDd = soundPool.load(getContext(), R.raw.d3, 1);
+//        integerSoundIDe = soundPool.load(getContext(), R.raw.e3, 1);
+//        integerSoundIDf = soundPool.load(getContext(), R.raw.f3, 1);
+//        integerSoundIDg = soundPool.load(getContext(), R.raw.g3, 1);
 
         return v;
     }
@@ -211,10 +211,10 @@ public class StartChase extends Fragment implements OnAntEventListener, GameCoun
             @Override
             public void onGameStopEvent()
             {
-                chaseTheLightClass.stopGame();
-                StartChaseDirections.ActionStartChaseToEndChase action = StartChaseDirections.actionStartChaseToEndChase();
-                action.setGameCount(score);
-                Navigation.findNavController(v).navigate(action);
+//                chaseTheLightClass.stopGame();
+//                StartChaseDirections.ActionStartChaseToEndChase action = StartChaseDirections.actionStartChaseToEndChase();
+//                action.setGameCount(score);
+//                Navigation.findNavController(v).navigate(action);
             }
 
             @Override
