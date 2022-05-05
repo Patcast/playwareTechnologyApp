@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.livelife.motolibrary.MotoConnection;
 import com.livelife.motolibrary.OnAntEventListener;
@@ -66,9 +65,9 @@ public class StartGame extends Fragment implements OnAntEventListener{
         pairingButton.setOnClickListener(p->paring(pairingButton));
         tilesNumText = view.findViewById(R.id.NumberOfTiles);
         nav = Navigation.findNavController(view);
-        level1.setOnClickListener(v-> startlevel1());
-        level2.setOnClickListener(v-> startlevel2());
-        level3.setOnClickListener(v-> startlevel3());
+        level1.setOnClickListener(v-> difficultySelected());
+        level2.setOnClickListener(v-> difficultySelected());
+        level3.setOnClickListener(v-> difficultySelected());
 
         if (numberOfTiles!=4){
             tilesNumText.setText("You dont have enough tiles :( :"+String.valueOf(numberOfTiles));
@@ -83,14 +82,17 @@ public class StartGame extends Fragment implements OnAntEventListener{
 
 
     // I have problems reestablishing the connection, how often do I need to pair.
-    private void startlevel1(){
+    /*private void startlevel1(){
         nav.navigate(R.id.action_startGameProject_to_startPianoTiles);
     }
     private void startlevel2(){
         nav.navigate(R.id.action_startGameProject_to_startPianoTiles);
-    }
-    private void startlevel3(){
-        nav.navigate(R.id.action_startGameProject_to_mainFragment2);
+    }*/
+    //TODO Add the difficulty of the option selected and pass it to adjust speed of the game.
+    //TODO Check that 4 tiles are conected
+
+    private void difficultySelected(){
+        nav.navigate(R.id.action_startGameProject_to_homeFragment);
     }
 
 

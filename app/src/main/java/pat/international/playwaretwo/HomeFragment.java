@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         Button startGame5 = view.findViewById(R.id.button_game5);
         Button startGame6 = view.findViewById(R.id.button_game6);
         Button startProject = view.findViewById((R.id.button_project));
-        Button startPiano = view.findViewById((R.id.button_piano));
+        //Button startPiano = view.findViewById((R.id.button_piano));
 
         tilesNumText = view.findViewById(R.id.textNumTilesStart);
         Button pairingButton = view.findViewById(R.id.button_start);
@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         startGame5.setOnClickListener(v-> startGameFive());
         startGame6.setOnClickListener(v-> startGameSix());
         startProject.setOnClickListener(v -> startProject());
-        startPiano.setOnClickListener(v -> startPianoTiles());
+       // startPiano.setOnClickListener(v -> startPianoTiles());
     }
 
     private void startGameFour() {
@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
     }
 
     private void startGameSeven() {
-        nav.navigate(R.id.action_mainFragment_to_startGame7);
+        //nav.navigate(R.id.action_mainFragment_to_startGame7);
        /* if(numOfTiles>0){
             nav.navigate(R.id.action_mainFragment_to_startGame4);
         }
@@ -125,9 +125,9 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         nav.navigate(R.id.action_mainFragment_to_startProject);
     }
 
-    private void startPianoTiles(){
+  /*  private void startPianoTiles(){
         nav.navigate(R.id.action_mainFragment_to_homeFragment);
-    }
+    }*/
 
     @Override
     public void onStart() {

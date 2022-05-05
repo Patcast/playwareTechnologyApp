@@ -15,7 +15,15 @@ import androidx.annotation.RequiresApi;
 
 import java.util.LinkedList;
 
-public class MainFragmentPresenter {
+import static com.livelife.motolibrary.AntData.LED_COLOR_RED;
+import static com.livelife.motolibrary.AntData.LED_COLOR_BLUE;
+import static com.livelife.motolibrary.AntData.LED_COLOR_GREEN;
+import static com.livelife.motolibrary.AntData.LED_COLOR_ORANGE;
+
+import pat.international.playwaretwo.GameColorObserver;
+
+
+public class MainFragmentPresenter implements GameColorObserver {
     IMainFragment ui;
     Bitmap bitmap;
     Canvas canvas;
@@ -120,19 +128,19 @@ public class MainFragmentPresenter {
     }*/
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void checkScore(String textButton){// pass Color of Tile
+    public void checkScore(int tileColor){// pass Color of Tile
         float coordinateOfColumnActivated;
-        switch(textButton) {
-            case "B0":
+        switch(tileColor) {
+            case LED_COLOR_RED:
                 coordinateOfColumnActivated =  (totalWidth/8);
                 break;
-            case "B1":
+            case LED_COLOR_BLUE:
                 coordinateOfColumnActivated =  (totalWidth*3/8);
                 break;
-            case "B2":
+            case LED_COLOR_GREEN:
                 coordinateOfColumnActivated =  (totalWidth*5/8);
                 break;
-            case "B3":
+            case LED_COLOR_ORANGE:
                 coordinateOfColumnActivated =  (totalWidth*7/8);
                 break;
             default:
@@ -189,6 +197,13 @@ public class MainFragmentPresenter {
             this.ui.unregisterSensor();
         }
         this.ui.updateHealth(this.health);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void notifyColor(int new_color) {
+//            color= new_color;
+//            colorText.setText(String.valueOf(color));
+            checkScore(new_color);
     }
 
     public interface IMainFragment{

@@ -1,8 +1,7 @@
+/*
 package pat.international.playwaretwo.Tone;
 
-import android.media.AudioFormat;
-import android.media.AudioManager;
-import android.media.AudioTrack;
+
 import android.media.SoundPool;
 import android.os.Bundle;
 
@@ -16,9 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import java.util.Random;
 
 import pat.international.playwaretwo.R;
 
@@ -149,4 +146,4 @@ public class SoundPlay extends Fragment {
     }
 
 
-}
+}*/
