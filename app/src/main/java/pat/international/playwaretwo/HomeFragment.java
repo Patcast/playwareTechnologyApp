@@ -50,6 +50,9 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         Button startGame4 = view.findViewById(R.id.button_game4);
         Button startGame5 = view.findViewById(R.id.button_game5);
         Button startGame6 = view.findViewById(R.id.button_game6);
+        Button startProject = view.findViewById((R.id.button_project));
+        Button startPiano = view.findViewById((R.id.button_piano));
+
         tilesNumText = view.findViewById(R.id.textNumTilesStart);
         Button pairingButton = view.findViewById(R.id.button_start);
         pairingButton.setOnClickListener(p->paring(pairingButton));
@@ -58,6 +61,8 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
         startGame4.setOnClickListener(v-> startGameFour());
         startGame5.setOnClickListener(v-> startGameFive());
         startGame6.setOnClickListener(v-> startGameSix());
+        startProject.setOnClickListener(v -> startProject());
+        startPiano.setOnClickListener(v -> startPianoTiles());
     }
 
     private void startGameFour() {
@@ -119,6 +124,11 @@ public class HomeFragment extends Fragment implements OnAntEventListener {
     private void startProject(){
         nav.navigate(R.id.action_mainFragment_to_startProject);
     }
+
+    private void startPianoTiles(){
+        nav.navigate(R.id.action_mainFragment_to_homeFragment);
+    }
+
     @Override
     public void onStart() {
         super.onStart();

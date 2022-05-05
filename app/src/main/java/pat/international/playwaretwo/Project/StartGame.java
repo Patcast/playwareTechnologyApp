@@ -90,7 +90,7 @@ public class StartGame extends Fragment implements OnAntEventListener{
         nav.navigate(R.id.action_startGameProject_to_startPianoTiles);
     }
     private void startlevel3(){
-        nav.navigate(R.id.action_startGameProject_to_startPianoTiles);
+        nav.navigate(R.id.action_startGameProject_to_mainFragment2);
     }
 
 
