@@ -41,7 +41,6 @@ public class PianoTilesGame extends Game {
     {
         super.onGameStart();
 
-        Toast.makeText(this.context, "Game is starting", Toast.LENGTH_SHORT).show();
     }
 
 

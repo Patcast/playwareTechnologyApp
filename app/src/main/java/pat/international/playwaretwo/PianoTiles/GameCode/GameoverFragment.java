@@ -1,6 +1,5 @@
 package pat.international.playwaretwo.PianoTiles.GameCode;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import pat.international.playwaretwo.ChaseTheLight.EndChaseArgs;
 import pat.international.playwaretwo.R;
 
 public class GameoverFragment extends Fragment implements GameoverFragmentPresenter.IGameoverFragment, View.OnClickListener {
-    FragmentListener fragmentListener;
     TextView score;
-    Button playAgain, backMenu, saveButton;
+    Button  saveButton;
     EditText playerName;
     GameoverFragmentPresenter gameoverFragmentPresenter;
     DBHandler db;
@@ -34,16 +31,12 @@ public class GameoverFragment extends Fragment implements GameoverFragmentPresen
         View toastView = inflater.inflate(R.layout.custom_toast, container, false);
         this.toast = new CustomToast(toastView, getActivity().getApplicationContext());
         this.score = view.findViewById(R.id.score);
-        this.playAgain = view.findViewById(R.id.play_again);
-        this.backMenu = view.findViewById(R.id.back_menu);
         this.playerName = view.findViewById(R.id.player_name);
         this.saveButton = view.findViewById(R.id.save_name);
 
         this.db = new DBHandler(this.getActivity());
         this.gameoverFragmentPresenter = new GameoverFragmentPresenter(GameoverFragmentArgs.fromBundle(getArguments()).getScore(), this, this.db, this.toast);
 
-        this.playAgain.setOnClickListener(this);
-        this.backMenu.setOnClickListener(this);
         this.saveButton.setOnClickListener(this);
 
         this.gameoverFragmentPresenter.loadData();
@@ -51,14 +44,7 @@ public class GameoverFragment extends Fragment implements GameoverFragmentPresen
         return view;
     }
 
-/*    public void onAttach(Context context){
-        super.onAttach(context);
-        if(context instanceof FragmentListener){
-            this.fragmentListener = (FragmentListener) context;
-        } else{
-            throw new ClassCastException(context.toString() + " must implement FragmentListener");
-        }
-    }*/
+
 
     public static GameoverFragment newInstance(int score){
         GameoverFragment fragment = new GameoverFragment();
@@ -70,7 +56,7 @@ public class GameoverFragment extends Fragment implements GameoverFragmentPresen
 
     @Override
     public void setScore(int score) {
-        this.score.setText("Your Score: " + Integer.toString(score));
+        this.score.setText("Your Score: " + score);
     }
 
     @Override
@@ -81,11 +67,7 @@ public class GameoverFragment extends Fragment implements GameoverFragmentPresen
     @Override
     public void onClick(View v) {
         String playerName = this.playerName.getText().toString().equals("") ? "Player" : this.playerName.getText().toString();
-        if(v == this.playAgain){
-            this.gameoverFragmentPresenter.playAgain(playerName);
-        } else if(v == this.backMenu){
-            this.gameoverFragmentPresenter.backToMenu(playerName);
-        } else if(v == this.saveButton){
+        if(v == this.saveButton){
             this.gameoverFragmentPresenter.saveScore(playerName);
             this.saveButton.setEnabled(false);
         }

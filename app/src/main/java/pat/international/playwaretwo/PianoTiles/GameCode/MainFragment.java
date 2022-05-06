@@ -33,14 +33,13 @@ import pat.international.playwaretwo.Project.PianoTilesGame;
 import pat.international.playwaretwo.R;
 
 
-public class MainFragment extends Fragment implements OnAntEventListener, MainFragmentPresenter.IMainFragment, View.OnClickListener, View.OnTouchListener, SensorEventListener,GameColorObserver{
-    FragmentListener fragmentListener;
+public class MainFragment extends Fragment implements OnAntEventListener, MainFragmentPresenter.IMainFragment, View.OnClickListener, SensorEventListener,GameColorObserver{
     MainFragmentPresenter mainFragmentPresenter;
     Button startButton;
     ImageView ivCanvas;
     Canvas canvas;
     Bitmap bitmap;
-    Button score, health,button1,button2,button0,button3;
+    Button score, health;
     Boolean initiated;
     SettingsPrefSaver settingsPrefSaver;
     CustomToast toast;
@@ -70,7 +69,7 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
         this.startButton.setOnClickListener(this);
         this.health.setOnClickListener(this);
 
-        this.ivCanvas.setOnTouchListener(this);
+        //this.ivCanvas.setOnTouchListener(this);
         this.mainFragmentPresenter = new MainFragmentPresenter(this, this.toast, this.settingsPrefSaver);
 
         this.initiated = false;
@@ -185,14 +184,14 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
             }
         }
     }
-    /// Maybe I can only substitute the onTouch and a similar method with the buttons.
+   /* /// Maybe I can only substitute the onTouch and a similar method with the buttons.
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN){ /// Trigger by click event on Tile
             //this.mainFragmentPresenter.checkScore(new PointF(event.getX(), event.getY()));
         }
         return true;
-    }
+    }*/
 
     @Override
     public void onSensorChanged(SensorEvent event) {

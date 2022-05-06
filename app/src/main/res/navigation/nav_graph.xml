@@ -106,6 +106,9 @@
         <action
             android:id="@+id/action_startProject_to_homeFragment2"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_startProject_to_highScoreFragment"
+            app:destination="@id/highScoreFragment" />
     </fragment>
 
     <fragment
@@ -134,9 +137,6 @@
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_highScoreFragment"
-            app:destination="@id/highScoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

@@ -43,7 +43,6 @@ public class project_home extends Fragment implements OnAntEventListener {
         connection.startMotoConnection(getContext());
         connection.saveRfFrequency(68); // See the back of your tile for your group’s RF
         connection.setDeviceId(7); //Your group number
-        //connection.registerListener(this);
 
         Button startGame = view.findViewById(R.id.startgame);
         Button startLeaderboard = view.findViewById(R.id.leaderboard);
@@ -58,13 +57,12 @@ public class project_home extends Fragment implements OnAntEventListener {
 
 
 
-    // I have problems reestablishing the connection, how often do I need to pair.
     private void startGamePiano(){
         nav.navigate(R.id.action_startProject_to_homeFragment2);
     }
 
     private void startLeaderboardScreen(){
-        //nav.navigate(R.id.action_startProject_to_startGameProject);
+        nav.navigate(R.id.action_startProject_to_highScoreFragment);
     }
 
     private void startChallengesScreen(){

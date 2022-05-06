@@ -5,12 +5,22 @@ public class Score {
     protected int score;
     protected String name;
     protected String datetime;
+    protected  int difficulty;
 
-    public Score(int id, int score, String name, String datetime){
+    public Score(int id, int score, String name, String datetime) {
         this.id = id;
         this.score = score;
         this.name = name;
         this.datetime = datetime;
+    }
+
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
     }
 
     public Score(){}

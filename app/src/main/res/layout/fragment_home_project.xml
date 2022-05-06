@@ -1,63 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Project.project_home">
+    tools:context=".Project.project_home"
+    android:padding="15dp">
 
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="324dp"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
+        android:fontFamily="@font/montserrat"
         android:inputType="textPersonName"
-        android:text="Player Name: "
+        android:hint="Player Name ... "
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/startgame"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
-
-    <Button
-        android:id="@+id/startgame"
-        android:layout_width="180dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="404dp"
-        android:backgroundTint="#4CAF50"
-        android:text="Start Game "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/challenges"
-        android:layout_width="180dp"
-        android:layout_height="80dp"
-        android:backgroundTint="#F44336"
-        android:text="Challenges"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/startgame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fontFamily="@font/montserrat"
+        android:textSize="34sp"
+        android:text="Single Player"
+        app:layout_constraintBottom_toTopOf="@+id/challenges"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startgame"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:fontFamily="@font/montserrat"
+        android:textSize="34sp"
+        android:id="@+id/challenges"
+        app:layout_constraintHeight_percent="0.1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:text="Challenges"
+        app:layout_constraintBottom_toTopOf="@+id/leaderboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:fontFamily="@font/montserrat"
+        android:textSize="34sp"
         android:id="@+id/leaderboard"
-        android:layout_width="180dp"
-        android:layout_height="80dp"
-        android:backgroundTint="#E6B729"
+        app:layout_constraintHeight_percent="0.1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:text="Leaderboard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Dancing Tiles Battle"
+        android:textSize="80sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/startgame"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startgame"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

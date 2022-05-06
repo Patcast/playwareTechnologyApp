@@ -7,11 +7,9 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-import android.os.Build;
 import android.util.Log;
 import android.widget.ImageView;
 
-import androidx.annotation.RequiresApi;
 
 import java.util.LinkedList;
 
@@ -20,7 +18,6 @@ import static com.livelife.motolibrary.AntData.LED_COLOR_BLUE;
 import static com.livelife.motolibrary.AntData.LED_COLOR_GREEN;
 import static com.livelife.motolibrary.AntData.LED_COLOR_ORANGE;
 
-import pat.international.playwaretwo.GameColorObserver;
 
 
 public class MainFragmentPresenter {
@@ -39,7 +36,6 @@ public class MainFragmentPresenter {
     int score;
     int health;
     SettingsPrefSaver settingsPrefSaver;
-    //CountDownTimer toastCountDown;
     CustomToast toast;
     float totalWidth;
 
@@ -121,14 +117,10 @@ public class MainFragmentPresenter {
         this.playThread.stopThread();
     }
 
-  /*  public void checkScore(PointF tap){ // pass Color of Tile
-        for(int i = 0; i < this.threads.size(); i++){
-           this.threads.get(i).checkScore(tap);
-        }
-    }*/
 
 
-    public void checkScore(int tileColor){// pass Color of Tile
+
+    public void checkScore(int tileColor){
         float coordinateOfColumnActivated;
         switch(tileColor) {
             case LED_COLOR_RED:
@@ -151,11 +143,6 @@ public class MainFragmentPresenter {
             this.threads.get(i).checkScore(coordinateOfColumnActivated);
         }
 
-  /*      MainThread leadingTread = threads.stream()
-                                    .max(Comparator.comparing(MainThread::getVerticalPosition))
-                                    .orElseThrow(NoSuchElementException::new);
-
-        leadingTread.checkScore( coordinateOfColumnActivated);*/
     }
 
     public void checkSensor(float roll){
@@ -200,13 +187,7 @@ public class MainFragmentPresenter {
     }
 
 
- /*   public void notifyColor(int new_color) {
-//            color= new_color;
-//            colorText.setText(String.valueOf(color));
-            checkScore(new_color);
-            Log.d("COLOR:",String.valueOf(new_color));
-    }
-*/
+
     public interface IMainFragment{
         void updateCanvas(Canvas canvas);
         void initiateCanvas(Bitmap bitmap, Canvas canvas);

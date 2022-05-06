@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/gameover"
-        android:textSize="60sp"
+        android:textSize="80sp"
         android:fontFamily="@font/righteous"
         android:textColor="@color/black"/>
 
@@ -22,9 +22,9 @@
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/righteous"
         android:text="@string/score"
-        android:textSize="25sp"
-        android:fontFamily="@font/montserrat"/>
+        android:textSize="55sp" />
 
     <View
         android:layout_width="match_parent"
@@ -37,64 +37,36 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:text="@string/enter_name"
+            android:gravity="left"
             android:textSize="20sp" />
 
         <EditText
             android:id="@+id/player_name"
             android:hint="@string/name_hint"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="30sp"
             android:fontFamily="@font/montserrat"/>
 
-        <android.widget.Button
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_margin="10px"
+        <Button
             android:id="@+id/save_name"
+            android:layout_width="350dp"
+            android:layout_height="80dp"
+            android:layout_margin="10px"
+            android:fontFamily="@font/montserrat"
             android:text="@string/save_name"
-            android:background="@drawable/custom_button"
-            android:backgroundTint="@color/teal_700"
-            android:textColor="@color/white"
-            android:fontFamily="@font/fredoka_one"/>
+            android:textColor="@color/white" />
 
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="40dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
 
-        <android.widget.Button
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_margin="10px"
-            android:id="@+id/play_again"
-            android:text="@string/playagain"
-            android:background="@drawable/custom_button"
-            android:backgroundTint="@color/darkBlue"
-            android:textColor="@color/white"
-            android:fontFamily="@font/fredoka_one"/>
-
-        <android.widget.Button
-            android:layout_width="130dp"
-            android:layout_height="50dp"
-            android:layout_margin="10px"
-            android:id="@+id/back_menu"
-            android:text="@string/backmenu"
-            android:background="@drawable/custom_button"
-            android:backgroundTint="@color/darkRed"
-            android:textColor="@color/white"
-            android:fontFamily="@font/fredoka_one"/>
-    </LinearLayout>
 </LinearLayout>
