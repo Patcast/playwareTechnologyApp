@@ -117,6 +117,9 @@
         <action
             android:id="@+id/action_startProject_to_startGameProject"
             app:destination="@id/startGameProject" />
+        <action
+            android:id="@+id/action_startProject_to_leaderboardFragment2"
+            app:destination="@id/leaderboardFragment" />
     </fragment>
 
     <fragment
@@ -174,6 +177,12 @@
         android:id="@+id/highScoreFragment"
         android:name="pat.international.playwaretwo.PianoTiles.GameCode.HighScoreFragment"
         android:label="HighScoreFragment" />
+
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="pat.international.playwaretwo.Project.Leaderboard"
+        tools:layout="@layout/fragment_leader_board"
+        android:label="LeaderBoard" />
 
 
 </navigation>

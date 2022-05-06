@@ -66,7 +66,7 @@ public class project_home extends Fragment implements OnAntEventListener {
     }
 
     private void startLeaderboardScreen(){
-        nav.navigate(R.id.action_startProject_to_startGameProject);
+        nav.navigate(R.id.action_startProject_to_leaderboardFragment2);
     }
 
     private void startChallengesScreen(){
