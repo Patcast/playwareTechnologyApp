@@ -1,5 +1,6 @@
 package pat.international.playwaretwo.PianoTiles.GameCode;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,6 +19,9 @@ import static com.livelife.motolibrary.AntData.LED_COLOR_BLUE;
 import static com.livelife.motolibrary.AntData.LED_COLOR_GREEN;
 import static com.livelife.motolibrary.AntData.LED_COLOR_ORANGE;
 
+import androidx.core.content.ContextCompat;
+
+import pat.international.playwaretwo.R;
 
 
 public class MainFragmentPresenter {
@@ -38,9 +42,10 @@ public class MainFragmentPresenter {
     SettingsPrefSaver settingsPrefSaver;
     CustomToast toast;
     float totalWidth;
+    Context context;
 
 
-    public MainFragmentPresenter(IMainFragment ui, CustomToast toast, SettingsPrefSaver settingsPrefSaver){
+    public MainFragmentPresenter(IMainFragment ui, CustomToast toast, SettingsPrefSaver settingsPrefSaver,Context context){
         this.ui = ui;
         this.threadHandler = new ThreadHandler(this);
         this.threads = new LinkedList<>();
@@ -79,6 +84,16 @@ public class MainFragmentPresenter {
     }
 
     public void drawRect(PointF point){
+        if(point.x == 0){
+            this.paint.setColor(Color.RED);
+        } else if(point.x == this.viewSize.x/4){
+            this.paint.setColor(Color.BLUE);
+        } else if(point.x == this.viewSize.x/2){
+            this.paint.setColor(Color.GREEN);
+        } else if(point.x == this.viewSize.x/4*3){
+            this.paint.setColor(Color.YELLOW);
+        }
+
         this.canvas.drawRect(point.x, point.y, point.x+this.endPointX, point.y+this.endPointY, this.paint);
         //this.canvas.drawCircle(point.x, point.y, 100, this.paint);
         this.ui.updateCanvas(this.canvas);
@@ -98,18 +113,18 @@ public class MainFragmentPresenter {
             Log.d("MAIN","Tread Created");
         }
         else if(pos == 5){
-            this.toast.setText("Tilt Left!");
+            //this.toast.setText("Tilt Left!");
             SensorThread sensorThread = new SensorThread(this.threadHandler, true);
             sensorThread.start();
             this.sensorThreads.addLast(sensorThread);
-            this.toast.show();
+            //this.toast.show();
         }
         else if(pos == 6){
-            this.toast.setText("Tilt Right!");
+            //this.toast.setText("Tilt Right!");
             SensorThread sensorThread = new SensorThread(this.threadHandler, false);
             sensorThread.start();
             this.sensorThreads.addLast(sensorThread);
-            this.toast.show();
+            //this.toast.show();
         }
     }
 
@@ -121,6 +136,7 @@ public class MainFragmentPresenter {
 
 
     public void checkScore(int tileColor){
+        boolean goodPress = false;
         float coordinateOfColumnActivated;
         switch(tileColor) {
             case LED_COLOR_RED:
@@ -140,9 +156,10 @@ public class MainFragmentPresenter {
         }
 
         for(int i = 0; i < this.threads.size(); i++){
-            this.threads.get(i).checkScore(coordinateOfColumnActivated);
+            boolean o =this.threads.get(i).checkScore(coordinateOfColumnActivated);
+            if(o) goodPress = o;
         }
-
+        if(!goodPress)removeHealth();
     }
 
     public void checkSensor(float roll){

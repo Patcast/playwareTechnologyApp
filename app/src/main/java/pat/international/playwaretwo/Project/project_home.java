@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.livelife.motolibrary.MotoConnection;
 import com.livelife.motolibrary.OnAntEventListener;
 
+import pat.international.playwaretwo.PianoTiles.GameCode.DataBasePlayWare;
 import pat.international.playwaretwo.R;
 
 
@@ -46,13 +47,10 @@ public class project_home extends Fragment implements OnAntEventListener {
 
         Button startGame = view.findViewById(R.id.startgame);
         Button startLeaderboard = view.findViewById(R.id.leaderboard);
-        Button startChallenges = view.findViewById(R.id.challenges);
         nav = Navigation.findNavController(view);
         startGame.setOnClickListener(v-> startGamePiano());
         startLeaderboard.setOnClickListener(v-> startLeaderboardScreen());
-        startChallenges.setOnClickListener(v-> startChallengesScreen());
-
-
+        DataBasePlayWare.INSTANCE.setContext(getContext());
     }
 
 

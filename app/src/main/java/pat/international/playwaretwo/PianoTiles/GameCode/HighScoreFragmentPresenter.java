@@ -1,12 +1,11 @@
 package pat.international.playwaretwo.PianoTiles.GameCode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HighScoreFragmentPresenter {
 
     protected IHighScoreFragment ui;
-    //protected DBHandler db;
+
 
 
     public HighScoreFragmentPresenter(IHighScoreFragment ui){
@@ -14,7 +13,6 @@ public class HighScoreFragmentPresenter {
     }
 
     public void loadData(List<Score> list){
-        //this.list = this.db.getHighScore(limit);
         this.ui.updateList(list);
     }
 

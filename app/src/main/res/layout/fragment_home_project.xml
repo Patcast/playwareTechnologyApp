@@ -16,6 +16,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
+        android:visibility="gone"
         android:fontFamily="@font/montserrat"
         android:inputType="textPersonName"
         android:hint="Player Name ... "
@@ -31,24 +32,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fontFamily="@font/montserrat"
-        android:textSize="34sp"
         android:text="Single Player"
-        app:layout_constraintBottom_toTopOf="@+id/challenges"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:fontFamily="@font/montserrat"
         android:textSize="34sp"
-        android:id="@+id/challenges"
-        app:layout_constraintHeight_percent="0.1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-
-        android:text="Challenges"
         app:layout_constraintBottom_toTopOf="@+id/leaderboard"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

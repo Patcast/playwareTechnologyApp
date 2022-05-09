@@ -74,14 +74,14 @@ public class ListAdapter extends BaseAdapter {
         public void updateView(final Score score) {
             this.noUrut.setText(Integer.toString(this.i + 1));
             if(this.i == 0){
-                this.noUrut.setTextSize(38);
-                this.tvScore.setTextSize(33);
+                this.noUrut.setTextSize(60);
+                this.tvScore.setTextSize(60);
             } else if(this.i == 1){
-                this.noUrut.setTextSize(32);
-                this.tvScore.setTextSize(27);
+                this.noUrut.setTextSize(52);
+                this.tvScore.setTextSize(52);
             } else if(this.i == 2){
-                this.noUrut.setTextSize(26);
-                this.tvScore.setTextSize(21);
+                this.noUrut.setTextSize(45);
+                this.tvScore.setTextSize(45);
             }
             this.tvName.setText(score.getName());
             this.tvScore.setText("Score: " + Integer.toString(score.getScore()));

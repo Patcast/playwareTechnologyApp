@@ -70,7 +70,7 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
         this.health.setOnClickListener(this);
 
         //this.ivCanvas.setOnTouchListener(this);
-        this.mainFragmentPresenter = new MainFragmentPresenter(this, this.toast, this.settingsPrefSaver);
+        this.mainFragmentPresenter = new MainFragmentPresenter(this, this.toast, this.settingsPrefSaver,getContext());
 
         this.initiated = false;
 
@@ -195,7 +195,7 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        int sensorType = event.sensor.getType();
+     /*   int sensorType = event.sensor.getType();
         switch (sensorType){
             case Sensor.TYPE_ACCELEROMETER:
                 this.accelerometerReading = event.values.clone();
@@ -216,7 +216,7 @@ public class MainFragment extends Fragment implements OnAntEventListener, MainFr
         float roll = orientationAngles[2];
         if(roll > 0.8f || roll < -0.8f){
             this.mainFragmentPresenter.checkSensor(roll);
-        }
+        }*/
     }
 
     @Override

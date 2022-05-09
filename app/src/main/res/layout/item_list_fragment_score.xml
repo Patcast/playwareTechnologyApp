@@ -10,12 +10,12 @@
         android:id="@+id/no_urut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:paddingTop="2dp"
         android:fontFamily="@font/noto_sans"
-        android:textColor="@color/darkBlue"
-        android:text="123"/>
+        android:paddingTop="2dp"
+        android:text="123"
+        android:textAlignment="center"
+        android:textColor="@color/toolBar"
+        android:textSize="34sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -27,22 +27,23 @@
             android:id="@+id/isi_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="15sp"
+            android:fontFamily="@font/righteous"
             android:paddingTop="2dp"
-            android:fontFamily="@font/montserrat"
-            android:textColor="@color/darkRed"
-            android:text="Score: "/>
+            android:text="Score: "
+            android:textAlignment="center"
+            android:textColor="@color/toolBar"
+            android:textSize="34sp" />
 
         <TextView
             android:id="@+id/isi_nama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="15sp"
-            android:paddingTop="2dp"
             android:fontFamily="@font/montserrat"
-            android:text="Nama: "/>
+            android:paddingTop="2dp"
+            android:text="Nama: "
+            android:textAlignment="center"
+            android:textColor="@color/purple_200"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/isi_waktu"

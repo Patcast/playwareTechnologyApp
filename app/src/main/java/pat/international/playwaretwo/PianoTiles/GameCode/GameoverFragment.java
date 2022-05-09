@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,12 +16,14 @@ import androidx.fragment.app.Fragment;
 import pat.international.playwaretwo.R;
 
 public class GameoverFragment extends Fragment implements GameoverFragmentPresenter.IGameoverFragment, View.OnClickListener {
-    TextView score;
+    TextView scoreTextView;
     Button  saveButton;
     EditText playerName;
     GameoverFragmentPresenter gameoverFragmentPresenter;
     DBHandler db;
     CustomToast toast;
+    int score;
+    boolean saved;
 
     public GameoverFragment(){}
 
@@ -29,8 +32,9 @@ public class GameoverFragment extends Fragment implements GameoverFragmentPresen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gameover, container, false);
         View toastView = inflater.inflate(R.layout.custom_toast, container, false);
+
         this.toast = new CustomToast(toastView, getActivity().getApplicationContext());
-        this.score = view.findViewById(R.id.score);
+        this.scoreTextView = view.findViewById(R.id.score);
         this.playerName = view.findViewById(R.id.player_name);
         this.saveButton = view.findViewById(R.id.save_name);
 
@@ -40,23 +44,33 @@ public class GameoverFragment extends Fragment implements GameoverFragmentPresen
         this.saveButton.setOnClickListener(this);
 
         this.gameoverFragmentPresenter.loadData();
+        saveButton.setOnClickListener(v->saveScore());
+        saved= false;
 
         return view;
     }
 
 
 
-    public static GameoverFragment newInstance(int score){
-        GameoverFragment fragment = new GameoverFragment();
-        Bundle args = new Bundle();
-        args.putInt("score", score);
-        fragment.setArguments(args);
-        return fragment;
+    private void saveScore() {
+        if(!saved){
+            String name = playerName.getText().toString();
+            if(name.length()>0) {
+                DataBasePlayWare.INSTANCE.postGameChallenge(score, name);
+                saved = true;
+            }
+            else Toast.makeText(getContext(),"write your naame before saving",Toast.LENGTH_SHORT).show();
+        }
+
     }
+
+
 
     @Override
     public void setScore(int score) {
-        this.score.setText("Your Score: " + score);
+
+        this.scoreTextView.setText("Your Score: " + score);
+        this.score = score;
     }
 
     @Override

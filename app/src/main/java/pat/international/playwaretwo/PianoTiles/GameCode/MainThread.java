@@ -19,9 +19,6 @@ public class MainThread extends Thread{
         this.setPoint();
     }
 
-    public float getVerticalPosition() {
-        return this.start.y;
-    }
 
     public void setPoint(){
         if(this.pos == 1){
@@ -53,29 +50,20 @@ public class MainThread extends Thread{
         return;
     }
 
- /*   public void checkScore(PointF tap){
+
+    public boolean checkScore(float coordinateOfColumn){
         /// Translate tiles number to coordinates.
-        if(this.isClicked) return;
-        if(tap.x >= this.start.x && tap.x <= this.start.x + this.viewSize.x/4){ // Checks if it was clicked on the right column
-            if(tap.y >= this.start.y && tap.y <= this.start.y + this.viewSize.y/4){ // Checks if it was clicked at the right y location
-                Log.d("TAG", "Point***********");
-                this.threadHandler.addScore(this.pos);
-                this.threadHandler.clearRect(new PointF(this.start.x, this.start.y));
-                this.isClicked = true;
-            }
-        }
-    }*/
-    public void checkScore(float coordinateOfColumn){
-        /// Translate tiles number to coordinates.
-        if(this.isClicked) return;
+        if(this.isClicked) return true;
 
         if(coordinateOfColumn >= this.start.x && coordinateOfColumn <= this.start.x + this.viewSize.x/4){ // Checks if it was clicked on the right column
             if(  this.start.y >= this.viewSize.y*2/4){ // Checks if it was clicked at the right y location
                 this.threadHandler.addScore(this.pos);
                 this.threadHandler.clearRect(new PointF(this.start.x, this.start.y));
                 this.isClicked = true;
+
             }
         }
+        return isClicked;
     }
 
 
